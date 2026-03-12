@@ -43,26 +43,51 @@ const HERO_BG = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9
 
 function LogoSVG({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Cube — left face (yellow-orange) */}
-      <polygon points="45,18 75,34 75,66 45,50" fill="#F5A800"/>
-      {/* Cube — right face (orange-red) */}
-      <polygon points="75,34 105,18 105,50 75,66" fill="#E84C0E"/>
-      {/* Cube — top face (red-orange gradient center) */}
-      <polygon points="45,18 75,2 105,18 75,34" fill="#D63B10"/>
-      {/* Cube — inner Y divider lines */}
-      <line x1="75" y1="34" x2="75" y2="66" stroke="#B8400A" strokeWidth="0.8" opacity="0.5"/>
-      <line x1="75" y1="34" x2="45" y2="18" stroke="#C87A00" strokeWidth="0.8" opacity="0.4"/>
-      <line x1="75" y1="34" x2="105" y2="18" stroke="#C87A00" strokeWidth="0.8" opacity="0.4"/>
-      {/* Highlight top-left edge */}
-      <line x1="45" y1="18" x2="75" y2="2" stroke="#FFD080" strokeWidth="1.2" opacity="0.6"/>
-      {/* Text */}
-      <text x="112" y="48" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="22" fill="#FF6B00" letterSpacing="1">
+    <svg className={className} viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="clip-left">
+          <polygon points="4,44 44,22 44,68 4,90"/>
+        </clipPath>
+        <clipPath id="clip-right">
+          <polygon points="44,22 84,44 84,90 44,68"/>
+        </clipPath>
+        <clipPath id="clip-top">
+          <polygon points="4,44 44,22 84,44 44,66"/>
+        </clipPath>
+      </defs>
+
+      {/* Left face — orange base */}
+      <polygon points="4,44 44,22 44,68 4,90" fill="#F5A800"/>
+      {/* Left face — red curved stripe */}
+      <path d="M4,44 Q24,56 44,68 L44,22 Q24,34 4,44Z" fill="#E03010" clipPath="url(#clip-left)"/>
+      <path d="M4,44 C14,50 34,64 44,68 C34,58 14,48 4,44Z" fill="#E03010" clipPath="url(#clip-left)"/>
+      <path d="M4,44 Q10,60 16,76 Q24,70 44,68 Q28,62 4,44Z" fill="#CC2A0A" clipPath="url(#clip-left)"/>
+
+      {/* Right face — orange base */}
+      <polygon points="44,22 84,44 84,90 44,68" fill="#F5A800"/>
+      {/* Right face — red curved stripe */}
+      <path d="M44,22 Q64,34 84,44 Q64,56 44,68Z" fill="#E03010" clipPath="url(#clip-right)"/>
+      <path d="M64,22 Q74,34 84,44 Q74,56 64,68 Q54,56 54,44 Q54,32 64,22Z" fill="#CC2A0A" clipPath="url(#clip-right)"/>
+
+      {/* Top face — red */}
+      <polygon points="4,44 44,22 84,44 44,66" fill="#E03010"/>
+      {/* Top face — darker arc in center */}
+      <path d="M4,44 Q44,28 84,44 Q44,54 4,44Z" fill="#CC2A0A" clipPath="url(#clip-top)"/>
+
+      {/* White edge separators */}
+      <line x1="4" y1="44" x2="44" y2="22" stroke="white" strokeWidth="0.8" opacity="0.6"/>
+      <line x1="44" y1="22" x2="84" y2="44" stroke="white" strokeWidth="0.8" opacity="0.6"/>
+      <line x1="44" y1="22" x2="44" y2="68" stroke="white" strokeWidth="0.8" opacity="0.6"/>
+      <line x1="4" y1="44" x2="44" y2="66" stroke="white" strokeWidth="0.5" opacity="0.4"/>
+      <line x1="84" y1="44" x2="44" y2="66" stroke="white" strokeWidth="0.5" opacity="0.4"/>
+
+      {/* Text — vertically centred at mid-height = 56 (cube spans 22..90 = 68 total, mid=56) */}
+      <text x="96" y="48" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="20" fill="#FF6B00" letterSpacing="1" dominantBaseline="auto">
         СТРОНГ-
       </text>
-      <text x="112" y="72" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="22" fill="#FF6B00" letterSpacing="1">
+      <text x="96" y="72" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="20" fill="#FF6B00" letterSpacing="1" dominantBaseline="auto">
         МОНТАЖ
       </text>
     </svg>
