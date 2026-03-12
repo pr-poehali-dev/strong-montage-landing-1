@@ -516,7 +516,7 @@ export default function Index() {
       <footer className="border-t border-[#2a2a2a] px-6 py-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <a href="#" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="Стронг-Монтаж" className="h-8 w-auto object-contain" style={{ maxWidth: 130 }} />
+            <LogoSVG className="h-10 w-auto opacity-70" />
           </a>
           <p className="text-[#555] text-sm">© 2015–2026 ООО «Стронг-Монтаж»</p>
           <nav className="flex gap-6">
