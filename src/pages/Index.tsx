@@ -42,52 +42,65 @@ function StatCard({ value, suffix, label, started }: { value: number; suffix: st
 const HERO_BG = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9cb0.png';
 
 function LogoSVG({ className }: { className?: string }) {
+  // Cube vertices (isometric):
+  // Top:    C(44, 4)
+  // Left:   L(4,  26)
+  // Right:  R(84, 26)
+  // Center: M(44, 48)
+  // BotL:   BL(4, 70)
+  // BotR:   BR(84,70)
+  // Bot:    B(44, 92)
   return (
-    <svg className={className} viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 0 240 96" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="clip-left">
-          <polygon points="4,44 44,22 44,68 4,90"/>
+        <clipPath id="lc-top">
+          <polygon points="4,26 44,4 84,26 44,48"/>
         </clipPath>
-        <clipPath id="clip-right">
-          <polygon points="44,22 84,44 84,90 44,68"/>
+        <clipPath id="lc-left">
+          <polygon points="4,26 44,48 4,70"/>
         </clipPath>
-        <clipPath id="clip-top">
-          <polygon points="4,44 44,22 84,44 44,66"/>
+        <clipPath id="lc-left-full">
+          <polygon points="4,26 44,48 44,92 4,70"/>
+        </clipPath>
+        <clipPath id="lc-right-full">
+          <polygon points="44,48 84,26 84,70 44,92"/>
         </clipPath>
       </defs>
 
-      {/* Left face — orange base */}
-      <polygon points="4,44 44,22 44,68 4,90" fill="#F5A800"/>
-      {/* Left face — red curved stripe */}
-      <path d="M4,44 Q24,56 44,68 L44,22 Q24,34 4,44Z" fill="#E03010" clipPath="url(#clip-left)"/>
-      <path d="M4,44 C14,50 34,64 44,68 C34,58 14,48 4,44Z" fill="#E03010" clipPath="url(#clip-left)"/>
-      <path d="M4,44 Q10,60 16,76 Q24,70 44,68 Q28,62 4,44Z" fill="#CC2A0A" clipPath="url(#clip-left)"/>
+      {/* ── TOP FACE ── red base */}
+      <polygon points="4,26 44,4 84,26 44,48" fill="#E8320A"/>
+      {/* top face: orange arc sweeping from left-edge to right-edge */}
+      <path d="M4,26 Q44,36 84,26 Q44,14 4,26Z" fill="#F5A800" clipPath="url(#lc-top)"/>
+      {/* top face: darker red arc above orange */}
+      <path d="M18,18 Q44,8 70,18 Q44,28 18,18Z" fill="#CC2808" clipPath="url(#lc-top)"/>
 
-      {/* Right face — orange base */}
-      <polygon points="44,22 84,44 84,90 44,68" fill="#F5A800"/>
-      {/* Right face — red curved stripe */}
-      <path d="M44,22 Q64,34 84,44 Q64,56 44,68Z" fill="#E03010" clipPath="url(#clip-right)"/>
-      <path d="M64,22 Q74,34 84,44 Q74,56 64,68 Q54,56 54,44 Q54,32 64,22Z" fill="#CC2A0A" clipPath="url(#clip-right)"/>
+      {/* ── LEFT FACE ── orange base */}
+      <polygon points="4,26 44,48 44,92 4,70" fill="#F5A800"/>
+      {/* left face: red arc from top-left corner curving to bottom-center */}
+      <path d="M4,26 C4,26 24,36 44,48 C34,58 14,64 4,70 C4,56 4,40 4,26Z" fill="#CC2808" clipPath="url(#lc-left-full)"/>
+      <path d="M4,26 Q14,50 4,70 Q24,62 44,92 Q34,72 44,48 Q24,36 4,26Z" fill="#E8320A" clipPath="url(#lc-left-full)"/>
 
-      {/* Top face — red */}
-      <polygon points="4,44 44,22 84,44 44,66" fill="#E03010"/>
-      {/* Top face — darker arc in center */}
-      <path d="M4,44 Q44,28 84,44 Q44,54 4,44Z" fill="#CC2A0A" clipPath="url(#clip-top)"/>
+      {/* ── RIGHT FACE ── orange base */}
+      <polygon points="44,48 84,26 84,70 44,92" fill="#F5A800"/>
+      {/* right face: red arc from top-right corner curving to bottom-center */}
+      <path d="M84,26 C84,26 64,36 44,48 C54,58 74,64 84,70 C84,56 84,40 84,26Z" fill="#CC2808" clipPath="url(#lc-right-full)"/>
+      <path d="M84,26 Q74,50 84,70 Q64,62 44,92 Q54,72 44,48 Q64,36 84,26Z" fill="#E8320A" clipPath="url(#lc-right-full)"/>
 
-      {/* White edge separators */}
-      <line x1="4" y1="44" x2="44" y2="22" stroke="white" strokeWidth="0.8" opacity="0.6"/>
-      <line x1="44" y1="22" x2="84" y2="44" stroke="white" strokeWidth="0.8" opacity="0.6"/>
-      <line x1="44" y1="22" x2="44" y2="68" stroke="white" strokeWidth="0.8" opacity="0.6"/>
-      <line x1="4" y1="44" x2="44" y2="66" stroke="white" strokeWidth="0.5" opacity="0.4"/>
-      <line x1="84" y1="44" x2="44" y2="66" stroke="white" strokeWidth="0.5" opacity="0.4"/>
+      {/* ── WHITE EDGE SEPARATORS ── */}
+      <polyline points="4,26 44,4 84,26 44,48 4,26" stroke="white" strokeWidth="1.5" strokeLinejoin="round" fill="none" opacity="0.85"/>
+      <line x1="44" y1="48" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
+      <line x1="4" y1="26" x2="4" y2="70" stroke="white" strokeWidth="1.5" opacity="0.85"/>
+      <line x1="84" y1="26" x2="84" y2="70" stroke="white" strokeWidth="1.5" opacity="0.85"/>
+      <line x1="4" y1="70" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
+      <line x1="84" y1="70" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
 
-      {/* Text — vertically centred at mid-height = 56 (cube spans 22..90 = 68 total, mid=56) */}
-      <text x="96" y="48" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="20" fill="#FF6B00" letterSpacing="1" dominantBaseline="auto">
+      {/* ── TEXT ── vertically centred: cube mid = (4+92)/2 = 48 */}
+      <text x="98" y="40" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="21" fill="#FF6B00" letterSpacing="1.5">
         СТРОНГ-
       </text>
-      <text x="96" y="72" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="20" fill="#FF6B00" letterSpacing="1" dominantBaseline="auto">
+      <text x="98" y="66" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="21" fill="#FF6B00" letterSpacing="1.5">
         МОНТАЖ
       </text>
     </svg>
@@ -188,7 +201,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
           {/* Logo */}
           <a href="#" className="flex items-center shrink-0 min-h-[44px]">
-            <img src="https://cdn.poehali.dev/files/152e1263-1c17-4cd7-b0fb-a8bc77826ba5.jpg" alt="Стронг-Монтаж" className="h-12 w-auto object-contain" />
+            <LogoSVG className="h-12 w-auto" />
           </a>
 
           {/* Nav desktop */}
