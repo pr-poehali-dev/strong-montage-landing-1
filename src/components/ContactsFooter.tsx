@@ -88,14 +88,16 @@ export default function ContactsFooter() {
       {/* ─── FOOTER ────────────────────────────────────────────────────── */}
       <footer className="border-t border-[#2a2a2a] px-6 py-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-              <rect width="36" height="36" rx="6" fill="#FF6B00"/>
-              <path d="M8 26 L18 10 L28 26 Z" fill="white" opacity="0.9"/>
-              <rect x="14" y="20" width="8" height="6" fill="white" opacity="0.7"/>
+          <a href="#">
+            <svg viewBox="0 0 200 76" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: 38, width: 'auto', opacity: 0.7 }}>
+              <polygon points="18,14 42,28 42,56 18,42" fill="#F5A800"/>
+              <polygon points="42,28 66,14 66,42 42,56" fill="#D63B10"/>
+              <polygon points="18,14 42,0 66,14 42,28" fill="#E84C0E"/>
+              <line x1="18" y1="14" x2="42" y2="0" stroke="#FFD080" strokeWidth="1" opacity="0.7"/>
+              <text x="76" y="32" fontFamily="Oswald,Arial,sans-serif" fontWeight="700" fontSize="20" fill="#FF6B00" letterSpacing="1.5">СТРОНГ-</text>
+              <text x="76" y="56" fontFamily="Oswald,Arial,sans-serif" fontWeight="700" fontSize="20" fill="#FF6B00" letterSpacing="1.5">МОНТАЖ</text>
             </svg>
-            <span className="font-heading text-sm tracking-widest uppercase text-[#999]">Стронг-Монтаж</span>
-          </div>
+          </a>
           <p className="text-[#555] text-sm">© 2015–2026 ООО «Стронг-Монтаж»</p>
           <nav className="flex gap-6">
             {navLinks.map(l => (

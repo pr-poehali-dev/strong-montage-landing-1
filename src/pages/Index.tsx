@@ -39,8 +39,35 @@ function StatCard({ value, suffix, label, started }: { value: number; suffix: st
   );
 }
 
-const LOGO_URL = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9cb0.png';
-const HERO_BG  = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9cb0.png';
+const HERO_BG = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9cb0.png';
+
+function LogoSVG({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Cube — left face (yellow-orange) */}
+      <polygon points="45,18 75,34 75,66 45,50" fill="#F5A800"/>
+      {/* Cube — right face (orange-red) */}
+      <polygon points="75,34 105,18 105,50 75,66" fill="#E84C0E"/>
+      {/* Cube — top face (red-orange gradient center) */}
+      <polygon points="45,18 75,2 105,18 75,34" fill="#D63B10"/>
+      {/* Cube — inner Y divider lines */}
+      <line x1="75" y1="34" x2="75" y2="66" stroke="#B8400A" strokeWidth="0.8" opacity="0.5"/>
+      <line x1="75" y1="34" x2="45" y2="18" stroke="#C87A00" strokeWidth="0.8" opacity="0.4"/>
+      <line x1="75" y1="34" x2="105" y2="18" stroke="#C87A00" strokeWidth="0.8" opacity="0.4"/>
+      {/* Highlight top-left edge */}
+      <line x1="45" y1="18" x2="75" y2="2" stroke="#FFD080" strokeWidth="1.2" opacity="0.6"/>
+      {/* Text */}
+      <text x="112" y="48" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="22" fill="#FF6B00" letterSpacing="1">
+        СТРОНГ-
+      </text>
+      <text x="112" y="72" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="22" fill="#FF6B00" letterSpacing="1">
+        МОНТАЖ
+      </text>
+    </svg>
+  );
+}
 
 export default function Index() {
   useReveal();
@@ -134,14 +161,9 @@ export default function Index() {
         style={{ height: 72 }}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
-          {/* Logo — фото пользователя */}
+          {/* Logo */}
           <a href="#" className="flex items-center shrink-0 min-h-[44px]">
-            <img
-              src={LOGO_URL}
-              alt="Стронг-Монтаж"
-              className="h-10 w-auto object-contain"
-              style={{ maxWidth: 160 }}
-            />
+            <LogoSVG className="h-12 w-auto" />
           </a>
 
           {/* Nav desktop */}
