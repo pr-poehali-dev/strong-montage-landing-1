@@ -181,11 +181,6 @@ export default function Index() {
         style={{ height: 72 }}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
-          {/* Logo */}
-          <a href="#" className="flex items-center shrink-0 min-h-[44px]">
-            <LogoSVG className="h-12 w-auto" />
-          </a>
-
           {/* Nav desktop */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map(l => (
