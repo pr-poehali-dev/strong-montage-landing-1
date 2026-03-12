@@ -188,7 +188,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
           {/* Logo */}
           <a href="#" className="flex items-center shrink-0 min-h-[44px]">
-            <LogoSVG className="h-12 w-auto" />
+            <img src="https://cdn.poehali.dev/files/152e1263-1c17-4cd7-b0fb-a8bc77826ba5.jpg" alt="Стронг-Монтаж" className="h-12 w-auto object-contain" />
           </a>
 
           {/* Nav desktop */}
