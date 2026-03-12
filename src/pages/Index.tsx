@@ -42,67 +42,49 @@ function StatCard({ value, suffix, label, started }: { value: number; suffix: st
 const HERO_BG = 'https://cdn.poehali.dev/files/91c5419c-3d2f-4411-a0f8-8bde507e9cb0.png';
 
 function LogoSVG({ className }: { className?: string }) {
-  // Cube vertices (isometric):
-  // Top:    C(44, 4)
-  // Left:   L(4,  26)
-  // Right:  R(84, 26)
-  // Center: M(44, 48)
-  // BotL:   BL(4, 70)
-  // BotR:   BR(84,70)
-  // Bot:    B(44, 92)
+  // Cube points:  T(48,2) L(2,26) R(94,26) M(48,50) BL(2,74) BR(94,74) B(48,98)
   return (
-    <svg className={className} viewBox="0 0 240 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 0 250 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="lc-top">
-          <polygon points="4,26 44,4 84,26 44,48"/>
-        </clipPath>
-        <clipPath id="lc-left">
-          <polygon points="4,26 44,48 4,70"/>
-        </clipPath>
-        <clipPath id="lc-left-full">
-          <polygon points="4,26 44,48 44,92 4,70"/>
-        </clipPath>
-        <clipPath id="lc-right-full">
-          <polygon points="44,48 84,26 84,70 44,92"/>
-        </clipPath>
+        <clipPath id="sm-top"><polygon points="2,26 48,2 94,26 48,50"/></clipPath>
+        <clipPath id="sm-left"><polygon points="2,26 48,50 48,98 2,74"/></clipPath>
+        <clipPath id="sm-right"><polygon points="48,50 94,26 94,74 48,98"/></clipPath>
       </defs>
 
-      {/* ── TOP FACE ── red base */}
-      <polygon points="4,26 44,4 84,26 44,48" fill="#E8320A"/>
-      {/* top face: orange arc sweeping from left-edge to right-edge */}
-      <path d="M4,26 Q44,36 84,26 Q44,14 4,26Z" fill="#F5A800" clipPath="url(#lc-top)"/>
-      {/* top face: darker red arc above orange */}
-      <path d="M18,18 Q44,8 70,18 Q44,28 18,18Z" fill="#CC2808" clipPath="url(#lc-top)"/>
+      {/* TOP FACE — red base, orange convex arc at bottom edge */}
+      <polygon points="2,26 48,2 94,26 48,50" fill="#F52400"/>
+      {/* orange sliver along bottom of top face */}
+      <path d="M2,26 C26,42 70,42 94,26 C70,36 26,36 2,26Z" fill="#F5A200" clipPath="url(#sm-top)"/>
 
-      {/* ── LEFT FACE ── orange base */}
-      <polygon points="4,26 44,48 44,92 4,70" fill="#F5A800"/>
-      {/* left face: red arc from top-left corner curving to bottom-center */}
-      <path d="M4,26 C4,26 24,36 44,48 C34,58 14,64 4,70 C4,56 4,40 4,26Z" fill="#CC2808" clipPath="url(#lc-left-full)"/>
-      <path d="M4,26 Q14,50 4,70 Q24,62 44,92 Q34,72 44,48 Q24,36 4,26Z" fill="#E8320A" clipPath="url(#lc-left-full)"/>
+      {/* LEFT FACE — orange base */}
+      <polygon points="2,26 48,50 48,98 2,74" fill="#F5A200"/>
+      {/* red curved band: from top (near center edge M) sweeping left/down to BL corner */}
+      {/* shape: top-inner-corner M→ curve left to L → down to BL → curve back to ~bottom-center */}
+      <path d="M48,50 C36,50 2,26 2,26 L2,74 C2,74 20,82 48,98 C34,80 30,64 48,50Z"
+        fill="#F52400" clipPath="url(#sm-left)"/>
 
-      {/* ── RIGHT FACE ── orange base */}
-      <polygon points="44,48 84,26 84,70 44,92" fill="#F5A800"/>
-      {/* right face: red arc from top-right corner curving to bottom-center */}
-      <path d="M84,26 C84,26 64,36 44,48 C54,58 74,64 84,70 C84,56 84,40 84,26Z" fill="#CC2808" clipPath="url(#lc-right-full)"/>
-      <path d="M84,26 Q74,50 84,70 Q64,62 44,92 Q54,72 44,48 Q64,36 84,26Z" fill="#E8320A" clipPath="url(#lc-right-full)"/>
+      {/* RIGHT FACE — orange base */}
+      <polygon points="48,50 94,26 94,74 48,98" fill="#F5A200"/>
+      {/* red curved band mirrored */}
+      <path d="M48,50 C60,50 94,26 94,26 L94,74 C94,74 76,82 48,98 C62,80 66,64 48,50Z"
+        fill="#F52400" clipPath="url(#sm-right)"/>
 
-      {/* ── WHITE EDGE SEPARATORS ── */}
-      <polyline points="4,26 44,4 84,26 44,48 4,26" stroke="white" strokeWidth="1.5" strokeLinejoin="round" fill="none" opacity="0.85"/>
-      <line x1="44" y1="48" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
-      <line x1="4" y1="26" x2="4" y2="70" stroke="white" strokeWidth="1.5" opacity="0.85"/>
-      <line x1="84" y1="26" x2="84" y2="70" stroke="white" strokeWidth="1.5" opacity="0.85"/>
-      <line x1="4" y1="70" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
-      <line x1="84" y1="70" x2="44" y2="92" stroke="white" strokeWidth="1.5" opacity="0.85"/>
+      {/* WHITE EDGE LINES */}
+      <line x1="2" y1="26" x2="48" y2="2"   stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="48" y1="2"  x2="94" y2="26"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="2" y1="26"  x2="48" y2="50"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="94" y1="26" x2="48" y2="50"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="2" y1="26"  x2="2"  y2="74"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="94" y1="26" x2="94" y2="74"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="48" y1="50" x2="48" y2="98"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="2" y1="74"  x2="48" y2="98"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
+      <line x1="94" y1="74" x2="48" y2="98"  stroke="white" strokeWidth="1.8" opacity="0.9"/>
 
-      {/* ── TEXT ── vertically centred: cube mid = (4+92)/2 = 48 */}
-      <text x="98" y="40" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="21" fill="#FF6B00" letterSpacing="1.5">
-        СТРОНГ-
-      </text>
-      <text x="98" y="66" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
-        fontSize="21" fill="#FF6B00" letterSpacing="1.5">
-        МОНТАЖ
-      </text>
+      {/* TEXT — centred at cube mid Y = (2+98)/2 = 50 → lines at 38 and 64 */}
+      <text x="104" y="40" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="21" fill="#FF6B00" letterSpacing="1.5">СТРОНГ-</text>
+      <text x="104" y="65" fontFamily="Oswald, Arial, sans-serif" fontWeight="700"
+        fontSize="21" fill="#FF6B00" letterSpacing="1.5">МОНТАЖ</text>
     </svg>
   );
 }
