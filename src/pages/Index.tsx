@@ -181,6 +181,12 @@ export default function Index() {
         style={{ height: 72 }}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
+          {/* Brand name */}
+          <a href="#" className="shrink-0 font-heading uppercase tracking-widest text-[#f0f0f0] hover:text-[#FF6B00] transition-colors"
+            style={{ fontSize: 'clamp(1rem,1.6vw,1.25rem)' }}>
+            Стронг-Монтаж
+          </a>
+
           {/* Nav desktop */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map(l => (
