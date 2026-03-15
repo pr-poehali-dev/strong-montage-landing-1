@@ -181,10 +181,9 @@ export default function Index() {
         style={{ height: 72 }}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-6">
-          {/* Brand name */}
-          <a href="#" className="shrink-0 font-heading uppercase tracking-widest text-[#f0f0f0] hover:text-[#FF6B00] transition-colors"
-            style={{ fontSize: 'clamp(1rem,1.6vw,1.25rem)' }}>
-            Стронг-Монтаж
+          {/* Logo */}
+          <a href="#" className="shrink-0 flex items-center">
+            <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-14 w-auto" />
           </a>
 
           {/* Nav desktop */}
