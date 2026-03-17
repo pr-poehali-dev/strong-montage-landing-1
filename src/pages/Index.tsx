@@ -372,33 +372,24 @@ export default function Index() {
 
       {/* ─── УСЛУГИ ────────────────────────────────────────────────────── */}
       <section id="services" className="section-pad px-6 max-w-7xl mx-auto">
-        <div className="mb-12 reveal">
-          <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Направления</span>
-          <h2 className="font-heading uppercase tracking-wide mt-2"
+        <div className="reveal">
+          <h2 className="font-heading uppercase tracking-wide"
             style={{ fontSize: 'clamp(2rem,4vw,3.5rem)' }}>
-            Наши услуги
+            Системы электропитания<br />и освещения
           </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {services.map((s, i) => (
-            <div key={i} className="reveal card-hover rounded-2xl p-8 bg-[#111111]"
-              style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="flex items-start gap-4 mb-5">
-                <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-xl bg-[#FF6B00]/10">
-                  <Icon name={s.icon} fallback="Settings" size={22} className="text-[#FF6B00]" />
-                </div>
-                <h3 className="font-heading text-xl uppercase tracking-wide pt-2">{s.title}</h3>
-              </div>
-              <ul className="space-y-2">
-                {s.items.map((item, j) => (
-                  <li key={j} className="flex items-center gap-3 text-[#999] text-sm">
-                    <span className="w-1 h-1 rounded-full bg-[#FF6B00] shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <ul className="mt-8 space-y-4">
+            {[
+              'Внутреннее электроосвещение.',
+              'Внутренняя розеточная сеть.',
+              'Системы бесперебойного питания.',
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-4 text-[#999]"
+                style={{ fontSize: 'clamp(1rem,2vw,1.4rem)' }}>
+                <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
