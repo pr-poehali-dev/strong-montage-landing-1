@@ -373,11 +373,13 @@ export default function Index() {
       {/* ─── УСЛУГИ ────────────────────────────────────────────────────── */}
       <section id="services" className="section-pad px-6 max-w-7xl mx-auto">
         <div className="reveal">
-          <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Направления</span>
-          <h2 className="font-heading uppercase tracking-wide mt-2 mb-10"
-            style={{ fontSize: 'clamp(2rem,4vw,3.5rem)' }}>
-            Наши услуги
-          </h2>
+          <div className="text-center mb-10">
+            <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Направления</span>
+            <h2 className="font-heading uppercase tracking-wide mt-2"
+              style={{ fontSize: 'clamp(2rem,4vw,3.5rem)' }}>
+              Наши услуги
+            </h2>
+          </div>
           <h3 className="font-heading uppercase tracking-wide"
             style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
             Системы электропитания<br />и освещения
