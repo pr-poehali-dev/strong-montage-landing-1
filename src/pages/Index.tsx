@@ -132,11 +132,11 @@ export default function Index() {
   ];
 
   const clientLogos = [
-    { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/3092e242-19a0-4d29-9810-107d742a176e.jpg' },
-    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/0d8dde98-e2db-4c6c-8f52-d2d24d29de2d.jpg' },
-    { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg' },
-    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/73826896-874f-450e-bb5c-f38ade1486c5.jpg' },
-    { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg' },
+    { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/3092e242-19a0-4d29-9810-107d742a176e.jpg', blend: 'screen' },
+    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/0d8dde98-e2db-4c6c-8f52-d2d24d29de2d.jpg', blend: 'screen' },
+    { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg', blend: 'multiply' },
+    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/73826896-874f-450e-bb5c-f38ade1486c5.jpg', blend: 'screen' },
+    { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg', blend: 'multiply' },
   ];
 
   const steps = [
@@ -336,7 +336,7 @@ export default function Index() {
           <div className="flex animate-marquee whitespace-nowrap gap-0 items-center" style={{ width: 'max-content' }}>
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div key={i} className="flex items-center justify-center px-10 opacity-80 hover:opacity-100 transition-opacity cursor-default">
-                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ mixBlendMode: 'screen' }} />
+                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ mixBlendMode: logo.blend as React.CSSProperties['mixBlendMode'] }} />
               </div>
             ))}
           </div>
