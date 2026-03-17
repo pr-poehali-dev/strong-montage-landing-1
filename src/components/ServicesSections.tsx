@@ -5,6 +5,14 @@ const clients = [
   'Парк Патриот', 'Леруа Мерлен', 'ГБУ МФЦ', 'Мед. Кластер', 'Сбер', 'Сколково'
 ];
 
+const clientLogos = [
+  { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/3092e242-19a0-4d29-9810-107d742a176e.jpg' },
+  { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/0d8dde98-e2db-4c6c-8f52-d2d24d29de2d.jpg' },
+  { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg' },
+  { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/73826896-874f-450e-bb5c-f38ade1486c5.jpg' },
+  { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg' },
+];
+
 const steps = [
   { n: '01', title: 'Выявление потребности', desc: 'Изучаем объект и задачи заказчика' },
   { n: '02', title: 'Концепция', desc: 'Формируем техническое решение' },
@@ -84,13 +92,11 @@ export default function ServicesSections() {
           </h2>
         </div>
         <div className="marquee-wrapper overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap gap-0" style={{ width: 'max-content' }}>
-            {[...clients, ...clients].map((c, i) => (
-              <span key={i}
-                className="font-heading text-2xl uppercase tracking-widest text-[#555] hover:text-[#FF6B00] transition-colors cursor-default px-8"
-                style={{ userSelect: 'none' }}>
-                {c}
-              </span>
+          <div className="flex animate-marquee whitespace-nowrap gap-0 items-center" style={{ width: 'max-content' }}>
+            {[...clientLogos, ...clientLogos].map((logo, i) => (
+              <div key={i} className="flex items-center justify-center px-10 opacity-60 hover:opacity-100 transition-opacity cursor-default">
+                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ filter: 'grayscale(100%) brightness(200%)' }} />
+              </div>
             ))}
           </div>
         </div>
