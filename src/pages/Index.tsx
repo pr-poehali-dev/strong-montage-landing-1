@@ -132,12 +132,14 @@ export default function Index() {
   ];
 
   const clientLogos = [
-    { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/3092e242-19a0-4d29-9810-107d742a176e.jpg', blend: 'screen' },
-    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/0d8dde98-e2db-4c6c-8f52-d2d24d29de2d.jpg', blend: 'screen' },
-    { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg', blend: 'multiply' },
-    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/8dcb670d-fa6f-4b9b-8e21-27960d703e9c.png', blend: 'multiply' },
-    { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg', blend: 'multiply' },
-    { name: 'Мои Документы', url: 'https://cdn.poehali.dev/files/98798ebd-7825-4c54-ac90-96735cf32589.jpg', blend: 'multiply' },
+    { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/a4ca8004-cf90-4a26-a617-600a473ae493.png' },
+    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/6b03bdb6-d73d-44eb-8bbd-d26a356ab7e5.png' },
+    { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg' },
+    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/8dcb670d-fa6f-4b9b-8e21-27960d703e9c.png' },
+    { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg' },
+    { name: 'Мои Документы', url: 'https://cdn.poehali.dev/files/98798ebd-7825-4c54-ac90-96735cf32589.jpg' },
+    { name: 'Сколково', url: 'https://cdn.poehali.dev/files/db09b6dc-2eed-4fa8-8715-f7d8c1615fc5.png' },
+    { name: 'Лемана Про', url: 'https://cdn.poehali.dev/files/a6d26004-8102-42f4-b5ae-84f2a2f35fb2.png' },
   ];
 
   const steps = [
