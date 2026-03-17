@@ -133,13 +133,13 @@ export default function Index() {
 
   const clientLogos = [
     { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/a4ca8004-cf90-4a26-a617-600a473ae493.png', h: 'h-14' },
-    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/6b03bdb6-d73d-44eb-8bbd-d26a356ab7e5.png', h: 'h-14' },
+    { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/6b03bdb6-d73d-44eb-8bbd-d26a356ab7e5.png', h: 'h-28' },
     { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg', h: 'h-14' },
     { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/8dcb670d-fa6f-4b9b-8e21-27960d703e9c.png', h: 'h-20' },
     { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg', h: 'h-14' },
     { name: 'Мои Документы', url: 'https://cdn.poehali.dev/files/98798ebd-7825-4c54-ac90-96735cf32589.jpg', h: 'h-14' },
     { name: 'Сколково', url: 'https://cdn.poehali.dev/files/db09b6dc-2eed-4fa8-8715-f7d8c1615fc5.png', h: 'h-20' },
-    { name: 'Лемана Про', url: 'https://cdn.poehali.dev/files/a6d26004-8102-42f4-b5ae-84f2a2f35fb2.png', h: 'h-20' },
+    { name: 'Лемана Про', url: 'https://cdn.poehali.dev/files/a6d26004-8102-42f4-b5ae-84f2a2f35fb2.png', h: 'h-28' },
   ];
 
   const steps = [
