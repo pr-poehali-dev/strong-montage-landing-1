@@ -380,10 +380,13 @@ export default function Index() {
               Наши услуги
             </h2>
           </div>
-          <h3 className="font-heading uppercase tracking-wide"
-            style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
-            Системы электропитания<br />и освещения
-          </h3>
+          <div className="flex items-start gap-5">
+            <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>01</span>
+            <h3 className="font-heading uppercase tracking-wide pt-2"
+              style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+              Системы электропитания<br />и освещения
+            </h3>
+          </div>
           <ul className="mt-8 space-y-4">
             {[
               'Внутреннее электроосвещение.',
@@ -407,10 +410,13 @@ export default function Index() {
             </div>
             {/* Контент поверх */}
             <div className="relative z-10 p-8 md:p-12">
-              <h3 className="font-heading uppercase tracking-wide"
-                style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
-                Структурированные кабельные системы
-              </h3>
+              <div className="flex items-start gap-5">
+                <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>02</span>
+                <h3 className="font-heading uppercase tracking-wide pt-2"
+                  style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+                  Структурированные кабельные системы
+                </h3>
+              </div>
               <ul className="mt-8 space-y-4">
                 {[
                   'Локально-вычислительные сети.',
@@ -434,10 +440,13 @@ export default function Index() {
           </div>
 
           <div className="mt-16 border-t border-[#2a2a2a] pt-16">
-            <h3 className="font-heading uppercase tracking-wide"
-              style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
-              Системы физической и пожарной безопасности
-            </h3>
+            <div className="flex items-start gap-5">
+              <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>03</span>
+              <h3 className="font-heading uppercase tracking-wide pt-2"
+                style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+                Системы физической и пожарной безопасности
+              </h3>
+            </div>
             <ul className="mt-8 space-y-4">
               {[
                 'Автоматические системы пожарной сигнализации.',
@@ -459,10 +468,13 @@ export default function Index() {
           </div>
 
           <div className="mt-16 border-t border-[#2a2a2a] pt-16">
-            <h3 className="font-heading uppercase tracking-wide"
-              style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
-              Системы автоматического пожаротушения
-            </h3>
+            <div className="flex items-start gap-5">
+              <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>04</span>
+              <h3 className="font-heading uppercase tracking-wide pt-2"
+                style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+                Системы автоматического пожаротушения
+              </h3>
+            </div>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 { title: 'Тонкораспыленная вода', icon: 'Droplets' },
@@ -491,10 +503,13 @@ export default function Index() {
       <section className="section-pad px-6 bg-[#0a0a0a] border-y border-[#2a2a2a] overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 reveal">
-            <h2 className="font-heading uppercase tracking-wide"
-              style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)' }}>
-              Архитектурно-художественная подсветка
-            </h2>
+            <div className="flex items-center justify-center gap-5">
+              <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>05</span>
+              <h2 className="font-heading uppercase tracking-wide"
+                style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)' }}>
+                Архитектурно-художественная подсветка
+              </h2>
+            </div>
           </div>
           {/* Анимация контурной подсветки здания */}
           <div className="flex items-end justify-center" style={{ height: 320 }}>
