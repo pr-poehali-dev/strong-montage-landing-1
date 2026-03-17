@@ -423,6 +423,31 @@ export default function Index() {
               ))}
             </ul>
           </div>
+
+          <div className="mt-16 border-t border-[#2a2a2a] pt-16">
+            <h3 className="font-heading uppercase tracking-wide"
+              style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+              Системы физической и пожарной безопасности
+            </h3>
+            <ul className="mt-8 space-y-4">
+              {[
+                'Автоматические системы пожарной сигнализации.',
+                'Системы речевого оповещения, управления эвакуацией.',
+                'Противопожарная автоматика.',
+                'Системы видеонаблюдения.',
+                'Видео-аналитические системы.',
+                'Системы контроля и управления доступом.',
+                'Системы охраны периметра.',
+                'Системы охранной сигнализации.',
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-4 text-[#999]"
+                  style={{ fontSize: 'clamp(1rem,2vw,1.4rem)' }}>
+                  <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
