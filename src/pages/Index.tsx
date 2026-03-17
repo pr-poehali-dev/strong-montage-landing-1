@@ -373,10 +373,15 @@ export default function Index() {
       {/* ─── УСЛУГИ ────────────────────────────────────────────────────── */}
       <section id="services" className="section-pad px-6 max-w-7xl mx-auto">
         <div className="reveal">
-          <h2 className="font-heading uppercase tracking-wide"
+          <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Направления</span>
+          <h2 className="font-heading uppercase tracking-wide mt-2 mb-10"
             style={{ fontSize: 'clamp(2rem,4vw,3.5rem)' }}>
-            Системы электропитания<br />и освещения
+            Наши услуги
           </h2>
+          <h3 className="font-heading uppercase tracking-wide"
+            style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+            Системы электропитания<br />и освещения
+          </h3>
           <ul className="mt-8 space-y-4">
             {[
               'Внутреннее электроосвещение.',
