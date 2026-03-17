@@ -335,8 +335,8 @@ export default function Index() {
         <div className="marquee-wrapper overflow-hidden">
           <div className="flex animate-marquee whitespace-nowrap gap-0 items-center" style={{ width: 'max-content' }}>
             {[...clientLogos, ...clientLogos].map((logo, i) => (
-              <div key={i} className="flex items-center justify-center px-10 opacity-50 hover:opacity-100 transition-opacity cursor-default">
-                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ filter: 'grayscale(100%) brightness(200%)' }} />
+              <div key={i} className="flex items-center justify-center px-10 opacity-80 hover:opacity-100 transition-opacity cursor-default">
+                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ mixBlendMode: 'screen' }} />
               </div>
             ))}
           </div>
