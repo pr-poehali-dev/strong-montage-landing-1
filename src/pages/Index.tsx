@@ -333,11 +333,11 @@ export default function Index() {
             Нам доверяют
           </h2>
         </div>
-        <div className="marquee-wrapper overflow-hidden">
+        <div className="marquee-wrapper overflow-hidden bg-white rounded-xl py-4">
           <div className="flex animate-marquee whitespace-nowrap gap-0 items-center" style={{ width: 'max-content' }}>
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div key={i} className="flex items-center justify-center px-10 opacity-80 hover:opacity-100 transition-opacity cursor-default">
-                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" style={{ mixBlendMode: logo.blend as React.CSSProperties['mixBlendMode'] }} />
+                <img src={logo.url} alt={logo.name} className="h-14 w-auto object-contain" />
               </div>
             ))}
           </div>
