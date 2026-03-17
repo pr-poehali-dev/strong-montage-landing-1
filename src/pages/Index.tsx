@@ -454,22 +454,26 @@ export default function Index() {
               style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
               Системы автоматического пожаротушения
             </h3>
-            <ul className="mt-8 space-y-4">
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
-                'Тонкораспыленная вода.',
-                'Порошковое.',
-                'Аэрозольное.',
-                'Газовое.',
-                'Противопожарный водопровод.',
-                'Спринклерная система.',
+                { title: 'Тонкораспыленная вода', icon: 'Droplets' },
+                { title: 'Порошковое', icon: 'Wind' },
+                { title: 'Аэрозольное', icon: 'CloudFog' },
+                { title: 'Газовое', icon: 'Flame' },
+                { title: 'Противопожарный водопровод', icon: 'Pipette' },
+                { title: 'Спринклерная система', icon: 'Sprout' },
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-4 text-[#999]"
-                  style={{ fontSize: 'clamp(1rem,2vw,1.4rem)' }}>
-                  <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
-                  {item}
-                </li>
+                <div key={i}
+                  className="group rounded-2xl border border-[#2a2a2a] bg-[#111] p-6 cursor-default transition-all duration-300 hover:border-[#FF6B00] hover:shadow-[0_0_24px_rgba(255,107,0,0.25)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-[#FF6B00]/25">
+                    <Icon name={item.icon} fallback="Flame" size={20} className="text-[#FF6B00]" />
+                  </div>
+                  <p className="font-heading uppercase tracking-wide text-sm text-[#ccc] group-hover:text-white transition-colors duration-300">
+                    {item.title}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
