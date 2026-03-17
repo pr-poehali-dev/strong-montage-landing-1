@@ -479,26 +479,79 @@ export default function Index() {
       </section>
 
       {/* ─── АХП ───────────────────────────────────────────────────────── */}
-      <section className="section-pad px-6 bg-[#0d0d0d] border-y border-[#2a2a2a]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center gap-8">
-          <div className="reveal flex-1">
-            <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">АХП</span>
-            <h2 className="font-heading uppercase tracking-wide mt-2"
+      <section className="section-pad px-6 bg-[#0a0a0a] border-y border-[#2a2a2a] overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <h2 className="font-heading uppercase tracking-wide"
               style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)' }}>
-              Сопровождение объектов
+              Архитектурно-художественная подсветка
             </h2>
-            <p className="text-[#999] mt-4 max-w-xl leading-relaxed">
-              После сдачи объекта обеспечиваем техническое обслуживание и эксплуатационное
-              сопровождение всех инженерных систем — плановое и экстренное.
-            </p>
           </div>
-          <div className="reveal flex flex-wrap gap-3 md:justify-end">
-            {['Плановое ТО', 'Аварийный выезд', 'Ежегодные проверки', 'Замена расходников'].map((t, i) => (
-              <span key={i}
-                className="border border-[#2a2a2a] text-[#999] text-sm px-4 py-2 rounded-full hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors">
-                {t}
-              </span>
-            ))}
+          {/* Анимация контурной подсветки здания */}
+          <div className="flex items-end justify-center" style={{ height: 320 }}>
+            <svg viewBox="0 0 600 300" className="w-full max-w-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Главный корпус */}
+              <rect x="150" y="80" width="300" height="200" stroke="#2a2a2a" strokeWidth="1.5" />
+              {/* Башня */}
+              <rect x="240" y="20" width="120" height="60" stroke="#2a2a2a" strokeWidth="1.5" />
+              {/* Антенна */}
+              <line x1="300" y1="20" x2="300" y2="0" stroke="#2a2a2a" strokeWidth="1.5" />
+              {/* Левое крыло */}
+              <rect x="50" y="140" width="100" height="140" stroke="#2a2a2a" strokeWidth="1.5" />
+              {/* Правое крыло */}
+              <rect x="450" y="140" width="100" height="140" stroke="#2a2a2a" strokeWidth="1.5" />
+              {/* Окна главного корпуса */}
+              {[0,1,2].map(row => [0,1,2,3].map(col => (
+                <rect key={`w-${row}-${col}`}
+                  x={175 + col * 65} y={110 + row * 55}
+                  width="35" height="30"
+                  stroke="#2a2a2a" strokeWidth="1" />
+              )))}
+
+              {/* Бегущая подсветка — главный корпус */}
+              <rect x="150" y="80" width="300" height="200"
+                stroke="#FF6B00" strokeWidth="2.5"
+                strokeDasharray="80 720"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 6px #FF6B00)' }}>
+                <animate attributeName="stroke-dashoffset" from="800" to="0" dur="4s" repeatCount="indefinite" />
+              </rect>
+
+              {/* Бегущая подсветка — башня */}
+              <rect x="240" y="20" width="120" height="60"
+                stroke="#FF6B00" strokeWidth="2"
+                strokeDasharray="50 360"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                <animate attributeName="stroke-dashoffset" from="360" to="0" dur="3s" repeatCount="indefinite" />
+              </rect>
+
+              {/* Бегущая подсветка — левое крыло */}
+              <rect x="50" y="140" width="100" height="140"
+                stroke="#FF6B00" strokeWidth="2"
+                strokeDasharray="60 480"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" />
+              </rect>
+
+              {/* Бегущая подсветка — правое крыло */}
+              <rect x="450" y="140" width="100" height="140"
+                stroke="#FF6B00" strokeWidth="2"
+                strokeDasharray="60 480"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" begin="1s" />
+              </rect>
+
+              {/* Антенна подсветка */}
+              <line x1="300" y1="20" x2="300" y2="0"
+                stroke="#FF6B00" strokeWidth="2"
+                strokeDasharray="10 40"
+                style={{ filter: 'drop-shadow(0 0 4px #FF6B00)' }}>
+                <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.5s" repeatCount="indefinite" />
+              </line>
+            </svg>
           </div>
         </div>
       </section>
