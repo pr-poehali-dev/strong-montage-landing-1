@@ -135,8 +135,9 @@ export default function Index() {
     { name: 'Мегафон', url: 'https://cdn.poehali.dev/files/3092e242-19a0-4d29-9810-107d742a176e.jpg', blend: 'screen' },
     { name: 'МКЖД', url: 'https://cdn.poehali.dev/files/0d8dde98-e2db-4c6c-8f52-d2d24d29de2d.jpg', blend: 'screen' },
     { name: 'Сбер', url: 'https://cdn.poehali.dev/files/9815535f-55c1-49a0-9758-d9025db72d91.jpg', blend: 'multiply' },
-    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/73826896-874f-450e-bb5c-f38ade1486c5.jpg', blend: 'screen' },
+    { name: 'Ростелеком', url: 'https://cdn.poehali.dev/files/8dcb670d-fa6f-4b9b-8e21-27960d703e9c.png', blend: 'multiply' },
     { name: 'ВТБ', url: 'https://cdn.poehali.dev/files/a1d43d83-7f7b-4b1a-82eb-6ad0d6507116.jpg', blend: 'multiply' },
+    { name: 'Мои Документы', url: 'https://cdn.poehali.dev/files/98798ebd-7825-4c54-ac90-96735cf32589.jpg', blend: 'multiply' },
   ];
 
   const steps = [
