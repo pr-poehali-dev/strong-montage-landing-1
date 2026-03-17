@@ -464,11 +464,11 @@ export default function Index() {
                 { title: 'Спринклерная система', icon: 'Sprout' },
               ].map((item, i) => (
                 <div key={i}
-                  className="group rounded-2xl border border-[#2a2a2a] bg-[#111] p-6 cursor-default transition-all duration-300 hover:border-[#FF6B00] hover:shadow-[0_0_24px_rgba(255,107,0,0.25)]">
-                  <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-[#FF6B00]/25">
+                  className="group rounded-2xl border border-[#FF6B00] bg-[#111] p-6 cursor-default shadow-[0_0_20px_rgba(255,107,0,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/20 flex items-center justify-center mb-4">
                     <Icon name={item.icon} fallback="Flame" size={20} className="text-[#FF6B00]" />
                   </div>
-                  <p className="font-heading uppercase tracking-wide text-sm text-[#ccc] group-hover:text-white transition-colors duration-300">
+                  <p className="font-heading uppercase tracking-wide text-sm text-white">
                     {item.title}
                   </p>
                 </div>
