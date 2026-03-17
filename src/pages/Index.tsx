@@ -448,6 +448,29 @@ export default function Index() {
               ))}
             </ul>
           </div>
+
+          <div className="mt-16 border-t border-[#2a2a2a] pt-16">
+            <h3 className="font-heading uppercase tracking-wide"
+              style={{ fontSize: 'clamp(1.4rem,3vw,2.5rem)' }}>
+              Системы автоматического пожаротушения
+            </h3>
+            <ul className="mt-8 space-y-4">
+              {[
+                'Тонкораспыленная вода.',
+                'Порошковое.',
+                'Аэрозольное.',
+                'Газовое.',
+                'Противопожарный водопровод.',
+                'Спринклерная система.',
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-4 text-[#999]"
+                  style={{ fontSize: 'clamp(1rem,2vw,1.4rem)' }}>
+                  <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
