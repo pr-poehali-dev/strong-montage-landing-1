@@ -236,14 +236,19 @@ export default function Index() {
 
       {/* ─── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
-        {/* Background image */}
+        {/* Background video */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img
-            src={HERO_BG}
-            alt=""
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.28)' }}
-          />
+            style={{ filter: 'brightness(0.35)' }}
+          >
+            <source src="https://cdn.poehali.dev/projects/b67fe31a-828a-418e-bfcc-fa51e1a5d562/bucket/cdef851c-5764-49e5-8d9d-4b3bfd3eb4fa.mp4" type="video/mp4" />
+            <img src={HERO_BG} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.28)' }} />
+          </video>
           {/* gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]/80" />
           {/* orange radial glow */}
