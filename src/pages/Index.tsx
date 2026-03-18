@@ -507,8 +507,8 @@ export default function Index() {
       {/* ─── АХП ───────────────────────────────────────────────────────── */}
       <section className="section-pad px-6 bg-[#0a0a0a] border-y border-[#2a2a2a] overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 reveal">
-            <div className="flex items-center justify-center gap-5">
+          <div className="mb-12 reveal">
+            <div className="flex items-center gap-5">
               <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(3rem,6vw,5rem)', opacity: 0.25 }}>05</span>
               <h2 className="font-heading uppercase tracking-wide"
                 style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)' }}>
@@ -537,47 +537,83 @@ export default function Index() {
                   stroke="#2a2a2a" strokeWidth="1" />
               )))}
 
-              {/* Бегущая подсветка — главный корпус */}
+              {/* Бегущая подсветка — главный корпус (glow layer) */}
               <rect x="150" y="80" width="300" height="200"
-                stroke="#FF6B00" strokeWidth="2.5"
+                stroke="#FF6B00" strokeWidth="8"
                 strokeDasharray="80 720"
                 strokeLinecap="round"
-                style={{ filter: 'drop-shadow(0 0 6px #FF6B00)' }}>
+                opacity="0.25"
+                style={{ filter: 'blur(4px)' }}>
+                <animate attributeName="stroke-dashoffset" from="800" to="0" dur="4s" repeatCount="indefinite" />
+              </rect>
+              {/* Бегущая подсветка — главный корпус */}
+              <rect x="150" y="80" width="300" height="200"
+                stroke="#FF9500" strokeWidth="3"
+                strokeDasharray="80 720"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 10px #FF6B00) drop-shadow(0 0 20px #FF6B00)' }}>
                 <animate attributeName="stroke-dashoffset" from="800" to="0" dur="4s" repeatCount="indefinite" />
               </rect>
 
-              {/* Бегущая подсветка — башня */}
+              {/* Бегущая подсветка — башня (glow) */}
               <rect x="240" y="20" width="120" height="60"
-                stroke="#FF6B00" strokeWidth="2"
+                stroke="#FF6B00" strokeWidth="6"
                 strokeDasharray="50 360"
                 strokeLinecap="round"
-                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                opacity="0.25"
+                style={{ filter: 'blur(4px)' }}>
+                <animate attributeName="stroke-dashoffset" from="360" to="0" dur="3s" repeatCount="indefinite" />
+              </rect>
+              {/* Бегущая подсветка — башня */}
+              <rect x="240" y="20" width="120" height="60"
+                stroke="#FF9500" strokeWidth="2.5"
+                strokeDasharray="50 360"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 10px #FF6B00) drop-shadow(0 0 18px #FF6B00)' }}>
                 <animate attributeName="stroke-dashoffset" from="360" to="0" dur="3s" repeatCount="indefinite" />
               </rect>
 
-              {/* Бегущая подсветка — левое крыло */}
+              {/* Бегущая подсветка — левое крыло (glow) */}
               <rect x="50" y="140" width="100" height="140"
-                stroke="#FF6B00" strokeWidth="2"
+                stroke="#FF6B00" strokeWidth="6"
                 strokeDasharray="60 480"
                 strokeLinecap="round"
-                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                opacity="0.25"
+                style={{ filter: 'blur(4px)' }}>
+                <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" />
+              </rect>
+              {/* Бегущая подсветка — левое крыло */}
+              <rect x="50" y="140" width="100" height="140"
+                stroke="#FF9500" strokeWidth="2.5"
+                strokeDasharray="60 480"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 10px #FF6B00) drop-shadow(0 0 18px #FF6B00)' }}>
                 <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" />
               </rect>
 
-              {/* Бегущая подсветка — правое крыло */}
+              {/* Бегущая подсветка — правое крыло (glow) */}
               <rect x="450" y="140" width="100" height="140"
-                stroke="#FF6B00" strokeWidth="2"
+                stroke="#FF6B00" strokeWidth="6"
                 strokeDasharray="60 480"
                 strokeLinecap="round"
-                style={{ filter: 'drop-shadow(0 0 5px #FF6B00)' }}>
+                opacity="0.25"
+                style={{ filter: 'blur(4px)' }}>
+                <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" begin="1s" />
+              </rect>
+              {/* Бегущая подсветка — правое крыло */}
+              <rect x="450" y="140" width="100" height="140"
+                stroke="#FF9500" strokeWidth="2.5"
+                strokeDasharray="60 480"
+                strokeLinecap="round"
+                style={{ filter: 'drop-shadow(0 0 10px #FF6B00) drop-shadow(0 0 18px #FF6B00)' }}>
                 <animate attributeName="stroke-dashoffset" from="480" to="0" dur="3.5s" repeatCount="indefinite" begin="1s" />
               </rect>
 
               {/* Антенна подсветка */}
               <line x1="300" y1="20" x2="300" y2="0"
-                stroke="#FF6B00" strokeWidth="2"
+                stroke="#FF9500" strokeWidth="2.5"
                 strokeDasharray="10 40"
-                style={{ filter: 'drop-shadow(0 0 4px #FF6B00)' }}>
+                style={{ filter: 'drop-shadow(0 0 8px #FF6B00) drop-shadow(0 0 16px #FF6B00)' }}>
                 <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.5s" repeatCount="indefinite" />
               </line>
             </svg>
