@@ -94,6 +94,8 @@ export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'sent'>('idle');
+  const [formConsent, setFormConsent] = useState(false);
+  const [cookieAccepted, setCookieAccepted] = useState(() => localStorage.getItem('cookie_accepted') === '1');
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
 
@@ -115,8 +117,14 @@ export default function Index() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!formConsent) return;
     setFormState('sent');
     setTimeout(() => setFormState('idle'), 3000);
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookie_accepted', '1');
+    setCookieAccepted(true);
   }
 
   const navLinks = [
@@ -935,11 +943,28 @@ export default function Index() {
                   <textarea rows={4} placeholder="Опишите ваш объект или задачу..."
                     className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-[#f0f0f0] placeholder-[#555] focus:outline-none focus:border-[#FF6B00] transition-colors resize-none" />
                 </div>
-                <button type="submit"
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={formConsent}
+                    onChange={e => setFormConsent(e.target.checked)}
+                    className="mt-0.5 w-4 h-4 shrink-0 accent-[#FF6B00] cursor-pointer"
+                  />
+                  <span className="text-xs text-[#999] leading-relaxed">
+                    Я согласен(а) с{' '}
+                    <a href="/privacy" target="_blank" className="text-[#FF6B00] hover:underline">
+                      политикой обработки персональных данных
+                    </a>
+                  </span>
+                </label>
+                <button type="submit" disabled={!formConsent}
                   className={`w-full font-medium py-3.5 rounded-xl transition-all min-h-[44px] ${
                     formState === 'sent'
                       ? 'bg-green-600 text-white'
-                      : 'gradient-bg text-white hover:opacity-90 hover:scale-[1.02]'
+                      : formConsent
+                        ? 'gradient-bg text-white hover:opacity-90 hover:scale-[1.02]'
+                        : 'bg-[#2a2a2a] text-[#555] cursor-not-allowed'
                   }`}>
                   {formState === 'sent' ? '✓ Отправлено!' : 'Отправить →'}
                 </button>
@@ -950,22 +975,49 @@ export default function Index() {
       </section>
 
       {/* ─── FOOTER ────────────────────────────────────────────────────── */}
-      <footer className="border-t border-[#2a2a2a] px-6 py-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <a href="#" className="flex items-center shrink-0">
-            <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-14 w-auto" />
-          </a>
-          <p className="text-[#555] text-sm">© 2015–2026 ООО «Стронг-Монтаж»</p>
-          <nav className="flex gap-6">
-            {navLinks.map(l => (
-              <a key={l.href} href={l.href}
-                className="text-[#555] text-sm hover:text-[#FF6B00] transition-colors min-h-[44px] flex items-center">
-                {l.label}
-              </a>
-            ))}
-          </nav>
+      <footer className="border-t border-[#2a2a2a] px-6 pt-8 pb-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+            <a href="#" className="flex items-center shrink-0">
+              <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-14 w-auto" />
+            </a>
+            <nav className="flex gap-6">
+              {navLinks.map(l => (
+                <a key={l.href} href={l.href}
+                  className="text-[#555] text-sm hover:text-[#FF6B00] transition-colors min-h-[44px] flex items-center">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+          <div className="border-t border-[#1a1a1a] pt-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div className="text-[#444] text-xs space-y-0.5">
+              <p>© 2015–2026 ООО «Стронг-Монтаж»</p>
+              <p>ИНН: 7726428510 · ОГРН: 1157746177888 · г. Москва, ул. Луганская, д. 3, корп. 3</p>
+            </div>
+            <a href="/privacy" className="text-[#555] text-xs hover:text-[#FF6B00] transition-colors whitespace-nowrap">
+              Политика конфиденциальности
+            </a>
+          </div>
         </div>
       </footer>
+
+      {/* ─── COOKIE-БАННЕР ──────────────────────────────────────────────── */}
+      {!cookieAccepted && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#111111] border-t border-[#2a2a2a] px-6 py-4">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-[#999] text-sm leading-relaxed">
+              Мы используем файлы cookie для корректной работы сайта.{' '}
+              Продолжая использование сайта, вы соглашаетесь с{' '}
+              <a href="/privacy" className="text-[#FF6B00] hover:underline">политикой конфиденциальности</a>.
+            </p>
+            <button onClick={acceptCookies}
+              className="shrink-0 gradient-bg text-white text-sm font-medium px-6 py-2.5 rounded-full hover:opacity-90 transition-all whitespace-nowrap min-h-[44px]">
+              Принять
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
