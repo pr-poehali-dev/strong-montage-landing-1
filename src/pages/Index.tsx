@@ -429,8 +429,8 @@ export default function Index() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { icon: 'Compass', title: 'Проектирование', desc: 'Техдокументация и рабочие чертежи' },
-            { icon: 'Truck', title: 'Поставка', desc: 'Сертифицированное оборудование' },
+            { icon: 'PenRuler', title: 'Проектирование', desc: 'Техдокументация и рабочие чертежи' },
+            { icon: 'PackageCheck', title: 'Поставка', desc: 'Сертифицированное оборудование' },
             { icon: 'Wrench', title: 'Монтаж', desc: 'Собственный штат специалистов' },
             { icon: 'Settings', title: 'Пусконаладка', desc: 'Тестирование и сдача объекта' },
           ].map((c, i) => (
