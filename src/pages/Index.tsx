@@ -176,10 +176,20 @@ export default function Index() {
   ];
 
   const portfolio = [
-    { img: 'https://picsum.photos/seed/datacenter/800/600', label: 'Центр обработки данных' },
-    { img: 'https://picsum.photos/seed/officebuilding/800/600', label: 'Бизнес-центр' },
-    { img: 'https://picsum.photos/seed/stadium2025/800/600', label: 'Спортивный комплекс' },
+    { img: 'https://cdn.poehali.dev/files/c5d9ad6a-296b-45cc-aaff-7074e414bf28.jpg', label: 'ВТБ АРЕНА' },
+    { img: 'https://cdn.poehali.dev/files/99c51ae9-a143-473a-bec4-b7bd993e6a32.jpg', label: 'Музей Криптографии' },
+    { img: 'https://cdn.poehali.dev/files/41fd911f-1c49-488b-8fa8-eb1abe83c660.jpg', label: 'Военно-патриотический парк «Патриот»' },
+    { img: 'https://cdn.poehali.dev/files/db75009d-e823-4282-a6a5-7bc8ac79408e.jpg', label: 'Штаб-квартира «Ростелеком»' },
+    { img: 'https://cdn.poehali.dev/files/1bdcb0ba-fc39-4cf8-a273-c4b5b9e28969.jpg', label: 'Распределительный центр «Северная Звезда»' },
   ];
+  const [portfolioIdx, setPortfolioIdx] = useState(0);
+
+  function portfolioPrev() {
+    setPortfolioIdx(i => (i - 1 + portfolio.length) % portfolio.length);
+  }
+  function portfolioNext() {
+    setPortfolioIdx(i => (i + 1) % portfolio.length);
+  }
 
   return (
     <div className="bg-[#0a0a0a] text-[#f0f0f0] font-body min-h-screen overflow-x-hidden">
@@ -652,20 +662,56 @@ export default function Index() {
             Наши объекты
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        {/* Карусель */}
+        <div className="reveal relative rounded-2xl overflow-hidden" style={{ aspectRatio: '16/7' }}>
           {portfolio.map((p, i) => (
             <div key={i}
-              className="reveal rounded-2xl overflow-hidden relative group cursor-pointer"
-              style={{ transitionDelay: `${i * 100}ms`, aspectRatio: '4/3' }}>
-              <img src={p.img} alt={p.label}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <span className="font-heading text-lg uppercase tracking-wide text-white">{p.label}</span>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <span className="font-heading text-sm uppercase tracking-widest text-[#f0f0f0]/80">{p.label}</span>
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: i === portfolioIdx ? 1 : 0, pointerEvents: i === portfolioIdx ? 'auto' : 'none' }}>
+              <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8 flex items-end justify-between">
+                <div>
+                  <p className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase mb-1">
+                    {portfolioIdx + 1} / {portfolio.length}
+                  </p>
+                  <span className="font-heading text-white uppercase tracking-wide"
+                    style={{ fontSize: 'clamp(1.2rem,2.5vw,2rem)' }}>
+                    {p.label}
+                  </span>
+                </div>
               </div>
             </div>
+          ))}
+
+          {/* Кнопки */}
+          <button onClick={portfolioPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 border border-white/20 hover:bg-[#FF6B00] hover:border-[#FF6B00] transition-all z-10">
+            <Icon name="ChevronLeft" size={20} className="text-white" />
+          </button>
+          <button onClick={portfolioNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 border border-white/20 hover:bg-[#FF6B00] hover:border-[#FF6B00] transition-all z-10">
+            <Icon name="ChevronRight" size={20} className="text-white" />
+          </button>
+
+          {/* Точки */}
+          <div className="absolute bottom-4 right-8 flex gap-2 z-10">
+            {portfolio.map((_, i) => (
+              <button key={i} onClick={() => setPortfolioIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === portfolioIdx ? 'w-6 bg-[#FF6B00]' : 'w-1.5 bg-white/40 hover:bg-white/70'}`} />
+            ))}
+          </div>
+        </div>
+
+        {/* Превью миниатюр */}
+        <div className="grid grid-cols-5 gap-3 mt-4">
+          {portfolio.map((p, i) => (
+            <button key={i} onClick={() => setPortfolioIdx(i)}
+              className={`rounded-xl overflow-hidden transition-all duration-300 ${i === portfolioIdx ? 'ring-2 ring-[#FF6B00] opacity-100' : 'opacity-50 hover:opacity-80'}`}
+              style={{ aspectRatio: '4/3' }}>
+              <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
+            </button>
           ))}
         </div>
       </section>
