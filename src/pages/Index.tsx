@@ -953,7 +953,7 @@ export default function Index() {
       <footer className="border-t border-[#2a2a2a] px-6 py-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <a href="#" className="flex items-center shrink-0">
-            <LogoSVG className="h-10 w-auto opacity-70" />
+            <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-14 w-auto" />
           </a>
           <p className="text-[#555] text-sm">© 2015–2026 ООО «Стронг-Монтаж»</p>
           <nav className="flex gap-6">
