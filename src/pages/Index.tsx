@@ -176,7 +176,19 @@ export default function Index() {
   ];
 
   const portfolio = [
-    { img: 'https://cdn.poehali.dev/files/c5d9ad6a-296b-45cc-aaff-7074e414bf28.jpg', label: 'ВТБ АРЕНА' },
+    {
+      img: 'https://cdn.poehali.dev/files/c5d9ad6a-296b-45cc-aaff-7074e414bf28.jpg',
+      label: 'ВТБ АРЕНА',
+      address: 'г. Москва, Ленинградский пр-т, д. 36',
+      year: '2021',
+      works: [
+        'ТЦ «Арена Плаза» — СКС; АПС; ОТС и СКУД; КРС телевизионной системы.',
+        'Фирменный магазин ФК «ДИНАМО-МОСКВА» — СМР (Автоматическая пожарная сигнализация).',
+        'Pizza Hut, ВабиСаби — СМР по системам АПС и СОУЭ.',
+        'Гимнастический центр «Baby Gim» — система пожарной сигнализации, система спринклерного водяного пожаротушения.',
+        'Здание СКРК ВТБ Арена – Центральный стадион «Динамо» им. Льва Яшина — АУПТ; АПЗ + ПНР.',
+      ],
+    },
     { img: 'https://cdn.poehali.dev/files/99c51ae9-a143-473a-bec4-b7bd993e6a32.jpg', label: 'Музей Криптографии' },
     { img: 'https://cdn.poehali.dev/files/41fd911f-1c49-488b-8fa8-eb1abe83c660.jpg', label: 'Военно-патриотический парк «Патриот»' },
     { img: 'https://cdn.poehali.dev/files/db75009d-e823-4282-a6a5-7bc8ac79408e.jpg', label: 'Штаб-квартира «Ростелеком»' },
@@ -188,12 +200,19 @@ export default function Index() {
     { img: 'https://cdn.poehali.dev/files/06af141e-e745-4ffc-97e0-cb45587eb79d.jpg', label: 'ЦОД СБЕРБАНК' },
   ];
   const [portfolioIdx, setPortfolioIdx] = useState(0);
+  const [portfolioFlipped, setPortfolioFlipped] = useState(false);
 
   function portfolioPrev() {
+    setPortfolioFlipped(false);
     setPortfolioIdx(i => (i - 1 + portfolio.length) % portfolio.length);
   }
   function portfolioNext() {
+    setPortfolioFlipped(false);
     setPortfolioIdx(i => (i + 1) % portfolio.length);
+  }
+  function portfolioGoTo(i: number) {
+    setPortfolioFlipped(false);
+    setPortfolioIdx(i);
   }
 
   return (
@@ -668,29 +687,99 @@ export default function Index() {
           </h2>
         </div>
 
-        {/* Карусель */}
-        <div className="reveal relative rounded-2xl overflow-hidden" style={{ aspectRatio: '16/7' }}>
-          {portfolio.map((p, i) => (
-            <div key={i}
-              className="absolute inset-0 transition-opacity duration-700"
-              style={{ opacity: i === portfolioIdx ? 1 : 0, pointerEvents: i === portfolioIdx ? 'auto' : 'none' }}>
-              <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 flex items-end justify-between">
-                <div>
-                  <p className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase mb-1">
-                    {portfolioIdx + 1} / {portfolio.length}
-                  </p>
-                  <span className="font-heading text-white uppercase tracking-wide"
-                    style={{ fontSize: 'clamp(1.2rem,2.5vw,2rem)' }}>
-                    {p.label}
-                  </span>
+        {/* Карусель с flip */}
+        <div className="reveal relative" style={{ aspectRatio: '16/7', perspective: '1200px' }}>
+          {portfolio.map((p, i) => {
+            const isActive = i === portfolioIdx;
+            const hasInfo = !!(p.address || p.year || (p.works && p.works.length));
+            return (
+              <div key={i}
+                className="absolute inset-0 transition-opacity duration-700"
+                style={{ opacity: isActive ? 1 : 0, pointerEvents: isActive ? 'auto' : 'none' }}>
+
+                {/* flip-контейнер */}
+                <div
+                  className="w-full h-full rounded-2xl overflow-hidden"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.65s cubic-bezier(0.4,0,0.2,1)',
+                    transform: (isActive && portfolioFlipped) ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                  }}>
+
+                  {/* ЛИЦО */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
+                    <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 flex items-end justify-between">
+                      <div>
+                        <p className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase mb-1">
+                          {portfolioIdx + 1} / {portfolio.length}
+                        </p>
+                        <span className="font-heading text-white uppercase tracking-wide"
+                          style={{ fontSize: 'clamp(1.2rem,2.5vw,2rem)' }}>
+                          {p.label}
+                        </span>
+                      </div>
+                      {hasInfo && (
+                        <button
+                          onClick={() => setPortfolioFlipped(true)}
+                          className="flex items-center gap-2 bg-[#FF6B00] hover:bg-[#e05e00] text-white text-xs font-medium px-4 py-2 rounded-full transition-all shrink-0">
+                          <Icon name="Info" size={14} />
+                          Подробнее
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ОБОРОТ */}
+                  <div
+                    className="absolute inset-0 rounded-2xl overflow-hidden overflow-y-auto bg-[#111111] p-8 flex flex-col"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                    <div className="flex items-start justify-between gap-4 mb-6">
+                      <h3 className="font-heading text-white uppercase tracking-wide"
+                        style={{ fontSize: 'clamp(1.1rem,2vw,1.6rem)' }}>
+                        {p.label}
+                      </h3>
+                      <button onClick={() => setPortfolioFlipped(false)}
+                        className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#FF6B00] transition-colors">
+                        <Icon name="X" size={16} className="text-white" />
+                      </button>
+                    </div>
+                    <div className="flex flex-wrap gap-x-10 gap-y-2 mb-5">
+                      {p.address && (
+                        <div>
+                          <p className="text-[#FF6B00] text-xs uppercase tracking-[0.15em] mb-0.5">Адрес</p>
+                          <p className="text-[#ccc] text-sm">{p.address}</p>
+                        </div>
+                      )}
+                      {p.year && (
+                        <div>
+                          <p className="text-[#FF6B00] text-xs uppercase tracking-[0.15em] mb-0.5">Год окончания работ</p>
+                          <p className="text-[#ccc] text-sm">{p.year}</p>
+                        </div>
+                      )}
+                    </div>
+                    {p.works && p.works.length > 0 && (
+                      <>
+                        <p className="text-[#FF6B00] text-xs uppercase tracking-[0.15em] mb-3">Работы</p>
+                        <ul className="space-y-2.5">
+                          {p.works.map((w, wi) => (
+                            <li key={wi} className="flex gap-3 text-sm text-[#bbb] leading-relaxed">
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF6B00] shrink-0" />
+                              {w}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
-          {/* Кнопки */}
+          {/* Кнопки навигации */}
           <button onClick={portfolioPrev}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 border border-white/20 hover:bg-[#FF6B00] hover:border-[#FF6B00] transition-all z-10">
             <Icon name="ChevronLeft" size={20} className="text-white" />
@@ -703,7 +792,7 @@ export default function Index() {
           {/* Точки */}
           <div className="absolute bottom-4 right-8 flex gap-2 z-10">
             {portfolio.map((_, i) => (
-              <button key={i} onClick={() => setPortfolioIdx(i)}
+              <button key={i} onClick={() => portfolioGoTo(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${i === portfolioIdx ? 'w-6 bg-[#FF6B00]' : 'w-1.5 bg-white/40 hover:bg-white/70'}`} />
             ))}
           </div>
@@ -712,7 +801,7 @@ export default function Index() {
         {/* Превью миниатюр */}
         <div className="grid grid-cols-5 gap-3 mt-4">
           {portfolio.map((p, i) => (
-            <button key={i} onClick={() => setPortfolioIdx(i)}
+            <button key={i} onClick={() => portfolioGoTo(i)}
               className={`rounded-xl overflow-hidden transition-all duration-300 ${i === portfolioIdx ? 'ring-2 ring-[#FF6B00] opacity-100' : 'opacity-50 hover:opacity-80'}`}
               style={{ aspectRatio: '4/3' }}>
               <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
