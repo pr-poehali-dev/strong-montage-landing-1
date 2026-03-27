@@ -181,6 +181,11 @@ export default function Index() {
     { img: 'https://cdn.poehali.dev/files/41fd911f-1c49-488b-8fa8-eb1abe83c660.jpg', label: 'Военно-патриотический парк «Патриот»' },
     { img: 'https://cdn.poehali.dev/files/db75009d-e823-4282-a6a5-7bc8ac79408e.jpg', label: 'Штаб-квартира «Ростелеком»' },
     { img: 'https://cdn.poehali.dev/files/1bdcb0ba-fc39-4cf8-a273-c4b5b9e28969.jpg', label: 'Распределительный центр «Северная Звезда»' },
+    { img: 'https://cdn.poehali.dev/files/0608a7f4-b17f-45ad-b47c-bc13678d6712.jpg', label: 'Офисные помещения МАТК «Оружейный»' },
+    { img: 'https://cdn.poehali.dev/files/da1ca4ca-afba-4b4d-8c44-0da7ee18fa11.jpg', label: 'Военная академия РВСН им. Петра Великого' },
+    { img: 'https://cdn.poehali.dev/files/bc58ab77-4f1a-419c-aaec-49cfda5cae94.jpg', label: 'ТЦ VEGAS 2 «Крокус», 1 этаж, помещение № 1-168, магазин «Other Stories»' },
+    { img: 'https://cdn.poehali.dev/files/2a77113a-f4f1-4453-b94d-6c9141b3146a.jpg', label: 'Многофункциональный жилой комплекс с подземной автостоянкой' },
+    { img: 'https://cdn.poehali.dev/files/06af141e-e745-4ffc-97e0-cb45587eb79d.jpg', label: 'ЦОД СБЕРБАНК' },
   ];
   const [portfolioIdx, setPortfolioIdx] = useState(0);
 
