@@ -907,7 +907,7 @@ export default function Index() {
               { icon: 'Phone', label: '+7 (495) 978-00-55', href: 'tel:+74959780055' },
               { icon: 'Mail', label: 'info@strong-montage.ru', href: 'mailto:info@strong-montage.ru' },
               { icon: 'Send', label: '@strongmontage', href: 'https://t.me/strongmontage' },
-              { icon: 'MapPin', label: 'Москва, ул. Луганская 3к3', href: '#' },
+              { icon: 'MapPin', label: 'Москва, ул. Братеевская, д. 18, кор. 3', href: '#' },
             ].map((c, i) => (
               <a key={i} href={c.href}
                 className="flex items-center gap-4 group min-h-[44px] p-5 rounded-2xl bg-[#111111] border border-[#2a2a2a] hover:border-[#FF6B00] transition-colors">
