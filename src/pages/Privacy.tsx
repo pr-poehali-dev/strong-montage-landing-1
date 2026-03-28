@@ -20,8 +20,10 @@ export default function Privacy() {
           <section>
             <h2 className="text-white font-semibold text-base mb-3 uppercase tracking-wide">2. Сведения об Операторе</h2>
             <ul className="space-y-1">
-              <li><span className="text-[#FF6B00]">Наименование:</span> ООО «Стронг-Монтаж»</li>
-              <li><span className="text-[#FF6B00]">Юридический адрес:</span> г. Москва, ул. Луганская, д. 3, корп. 3</li>
+              <li><span className="text-[#FF6B00]">Наименование:</span> Общество с ограниченной ответственностью «Стронг-Монтаж»</li>
+              <li><span className="text-[#FF6B00]">ИНН:</span> 7724302834</li>
+              <li><span className="text-[#FF6B00]">ОГРН:</span> 1157746041144</li>
+              <li><span className="text-[#FF6B00]">Юридический адрес:</span> 115408, г. Москва, ул. Братеевская, д. 18, кор. 3, этаж 1, помещение VI, комната 1</li>
               <li><span className="text-[#FF6B00]">Email:</span> info@strong-montage.ru</li>
               <li><span className="text-[#FF6B00]">Телефон:</span> +7 (495) 978-00-55</li>
             </ul>

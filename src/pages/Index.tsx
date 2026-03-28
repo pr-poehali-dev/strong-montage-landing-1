@@ -902,74 +902,26 @@ export default function Index() {
               Свяжитесь с нами
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="reveal space-y-6">
-              {[
-                { icon: 'Phone', label: '+7 (495) 978-00-55', href: 'tel:+74959780055' },
-                { icon: 'Mail', label: 'info@strong-montage.ru', href: 'mailto:info@strong-montage.ru' },
-                { icon: 'Send', label: '@strongmontage', href: 'https://t.me/strongmontage' },
-                { icon: 'MapPin', label: 'Москва, ул. Луганская 3к3', href: '#' },
-              ].map((c, i) => (
-                <a key={i} href={c.href}
-                  className="flex items-center gap-4 group min-h-[44px]">
-                  <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] group-hover:border-[#FF6B00] transition-colors">
-                    <Icon name={c.icon} fallback="Phone" size={18} className="text-[#FF6B00]" />
-                  </div>
-                  <span className="text-[#999] group-hover:text-[#f0f0f0] transition-colors">{c.label}</span>
-                </a>
-              ))}
-              <div className="pt-4 p-6 rounded-2xl bg-[#111111] border border-[#2a2a2a]">
-                <p className="text-[#999] text-sm leading-relaxed">
-                  Работаем с юридическими лицами и ИП. Заключаем договор, предоставляем полный пакет закрывающих документов.
-                </p>
-              </div>
-            </div>
-
-            <div className="reveal">
-              <form onSubmit={handleSubmit}
-                className="bg-[#111111] border border-[#2a2a2a] rounded-2xl p-8 space-y-4">
-                <div>
-                  <label className="text-xs text-[#999] uppercase tracking-widest mb-2 block">Имя</label>
-                  <input type="text" required placeholder="Как к вам обращаться?"
-                    className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-[#f0f0f0] placeholder-[#555] focus:outline-none focus:border-[#FF6B00] transition-colors min-h-[44px]" />
+          <div className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: 'Phone', label: '+7 (495) 978-00-55', href: 'tel:+74959780055' },
+              { icon: 'Mail', label: 'info@strong-montage.ru', href: 'mailto:info@strong-montage.ru' },
+              { icon: 'Send', label: '@strongmontage', href: 'https://t.me/strongmontage' },
+              { icon: 'MapPin', label: 'Москва, ул. Луганская 3к3', href: '#' },
+            ].map((c, i) => (
+              <a key={i} href={c.href}
+                className="flex items-center gap-4 group min-h-[44px] p-5 rounded-2xl bg-[#111111] border border-[#2a2a2a] hover:border-[#FF6B00] transition-colors">
+                <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] group-hover:border-[#FF6B00] transition-colors">
+                  <Icon name={c.icon} fallback="Phone" size={18} className="text-[#FF6B00]" />
                 </div>
-                <div>
-                  <label className="text-xs text-[#999] uppercase tracking-widest mb-2 block">Телефон</label>
-                  <input type="tel" required placeholder="+7 (___) ___-__-__"
-                    className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-[#f0f0f0] placeholder-[#555] focus:outline-none focus:border-[#FF6B00] transition-colors min-h-[44px]" />
-                </div>
-                <div>
-                  <label className="text-xs text-[#999] uppercase tracking-widest mb-2 block">Сообщение</label>
-                  <textarea rows={4} placeholder="Опишите ваш объект или задачу..."
-                    className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-[#f0f0f0] placeholder-[#555] focus:outline-none focus:border-[#FF6B00] transition-colors resize-none" />
-                </div>
-                <label className="flex items-start gap-3 cursor-pointer group">
-                  <input
-                    type="checkbox"
-                    required
-                    checked={formConsent}
-                    onChange={e => setFormConsent(e.target.checked)}
-                    className="mt-0.5 w-4 h-4 shrink-0 accent-[#FF6B00] cursor-pointer"
-                  />
-                  <span className="text-xs text-[#999] leading-relaxed">
-                    Я согласен(а) с{' '}
-                    <a href="/privacy" target="_blank" className="text-[#FF6B00] hover:underline">
-                      политикой обработки персональных данных
-                    </a>
-                  </span>
-                </label>
-                <button type="submit" disabled={!formConsent}
-                  className={`w-full font-medium py-3.5 rounded-xl transition-all min-h-[44px] ${
-                    formState === 'sent'
-                      ? 'bg-green-600 text-white'
-                      : formConsent
-                        ? 'gradient-bg text-white hover:opacity-90 hover:scale-[1.02]'
-                        : 'bg-[#2a2a2a] text-[#555] cursor-not-allowed'
-                  }`}>
-                  {formState === 'sent' ? '✓ Отправлено!' : 'Отправить →'}
-                </button>
-              </form>
-            </div>
+                <span className="text-[#999] group-hover:text-[#f0f0f0] transition-colors text-sm">{c.label}</span>
+              </a>
+            ))}
+          </div>
+          <div className="reveal mt-6 p-6 rounded-2xl bg-[#111111] border border-[#2a2a2a]">
+            <p className="text-[#999] text-sm leading-relaxed">
+              Работаем с юридическими лицами и ИП. Заключаем договор, предоставляем полный пакет закрывающих документов.
+            </p>
           </div>
         </div>
       </section>
@@ -993,7 +945,7 @@ export default function Index() {
           <div className="border-t border-[#1a1a1a] pt-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
             <div className="text-[#444] text-xs space-y-0.5">
               <p>© 2015–2026 ООО «Стронг-Монтаж»</p>
-              <p>ИНН: 7726428510 · ОГРН: 1157746177888 · г. Москва, ул. Луганская, д. 3, корп. 3</p>
+              <p>ИНН: 7724302834 · ОГРН: 1157746041144 · 115408, г. Москва, ул. Братеевская, д. 18, кор. 3, этаж 1, пом. VI, ком. 1</p>
             </div>
             <a href="/privacy" className="text-[#555] text-xs hover:text-[#FF6B00] transition-colors whitespace-nowrap">
               Политика конфиденциальности
