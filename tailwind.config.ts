@@ -107,5 +107,24 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities }: { addUtilities: (utilities: Record<string, Record<string, string>>) => void }) {
+			addUtilities({
+				'.scrollbar-hide': {
+					'-ms-overflow-style': 'none',
+					'scrollbar-width': 'none',
+				},
+				'.scrollbar-hide::-webkit-scrollbar': {
+					'display': 'none',
+				},
+				'.touch-action-pan-y': {
+					'touch-action': 'pan-y',
+				},
+				'.xs\\:inline': {
+					'display': 'inline',
+				},
+			});
+		},
+	],
 } satisfies Config;
