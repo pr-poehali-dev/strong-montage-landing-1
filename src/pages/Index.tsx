@@ -623,6 +623,39 @@ export default function Index() {
                 </div>
               ))}
             </div>
+
+            {/* Фото реализованных объектов */}
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                {
+                  url: 'https://cdn.poehali.dev/files/bc20d88a-1f60-4326-8b8e-a769ca57276a.JPG',
+                  alt: 'Монтаж трубопровода системы пожаротушения на промышленном объекте',
+                },
+                {
+                  url: 'https://cdn.poehali.dev/files/3b2de87b-c306-4d64-b31b-f2950107cdb7.JPG',
+                  alt: 'Разводка трубопровода пожаротушения в металлоконструкциях перекрытия',
+                },
+              ].map((photo, i) => (
+                <div
+                  key={i}
+                  className="relative overflow-hidden rounded-2xl border border-[#2a2a2a] group cursor-pointer"
+                  style={{ aspectRatio: '16/10' }}
+                >
+                  <img
+                    src={photo.url}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <p className="text-white/90 text-sm font-medium leading-snug">{photo.alt}</p>
+                  </div>
+                  {/* orange corner accent */}
+                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
