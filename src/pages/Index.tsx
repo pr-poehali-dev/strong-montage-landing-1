@@ -419,7 +419,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-4">
           {/* Logo */}
           <a href="#" className="shrink-0 flex items-center">
-            <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-10 sm:h-14 w-auto" />
+            <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" fetchPriority="high" decoding="async" className="h-10 sm:h-14 w-auto" />
           </a>
 
           {/* Nav desktop */}
@@ -479,11 +479,12 @@ export default function Index() {
             muted
             loop
             playsInline
+            preload="none"
             className="w-full h-full object-cover"
             style={{ filter: 'brightness(0.35)' }}
           >
             <source src="https://cdn.poehali.dev/projects/b67fe31a-828a-418e-bfcc-fa51e1a5d562/bucket/cdef851c-5764-49e5-8d9d-4b3bfd3eb4fa.mp4" type="video/mp4" />
-            <img src={HERO_BG} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.28)' }} />
+            <img src={HERO_BG} alt="" fetchPriority="high" className="w-full h-full object-cover" style={{ filter: 'brightness(0.28)' }} />
           </video>
           {/* gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]/80" />
@@ -568,7 +569,7 @@ export default function Index() {
       </section>
 
       {/* ─── КЛИЕНТЫ ───────────────────────────────────────────────────── */}
-      <section className="section-pad border-y border-[#2a2a2a] bg-[#0d0d0d]">
+      <section className="section-pad border-y border-[#2a2a2a] bg-[#0d0d0d] content-lazy">
         <div className="text-center mb-10 reveal">
           <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Клиенты</span>
           <h2 className="font-heading uppercase tracking-wide mt-2"
@@ -580,7 +581,7 @@ export default function Index() {
           <div className="flex animate-marquee whitespace-nowrap gap-0 items-center" style={{ width: 'max-content' }}>
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div key={i} className="flex items-center justify-center px-10 opacity-80 hover:opacity-100 transition-opacity cursor-default">
-                <img src={logo.url} alt={logo.name} className={`${logo.h} w-auto object-contain`} />
+                <img src={logo.url} alt={logo.name} loading="lazy" decoding="async" className={`${logo.h} w-auto object-contain`} />
               </div>
             ))}
           </div>
@@ -646,7 +647,7 @@ export default function Index() {
             {/* Фоновый баннер */}
             <div className="absolute inset-0 z-0">
               <img src="https://cdn.poehali.dev/files/f47d5c62-66f9-4b45-912a-4ee0b2b74fb2.png"
-                alt="" className="w-full h-full object-cover" />
+                alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-[#0a0a0a]/75" />
             </div>
             {/* Контент поверх */}
@@ -757,6 +758,8 @@ export default function Index() {
                   <img
                     src={photo.url}
                     alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* overlay */}
@@ -774,7 +777,7 @@ export default function Index() {
       </section>
 
       {/* ─── АХП ───────────────────────────────────────────────────────── */}
-      <section className="section-pad px-4 sm:px-6 bg-[#0a0a0a] border-y border-[#2a2a2a] overflow-hidden">
+      <section className="section-pad px-4 sm:px-6 bg-[#0a0a0a] border-y border-[#2a2a2a] overflow-hidden content-lazy">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 sm:mb-12 reveal">
             <div className="flex items-center gap-3 sm:gap-5">
@@ -913,7 +916,7 @@ export default function Index() {
       </section>
 
       {/* ─── ПОРТФОЛИО ─────────────────────────────────────────────────── */}
-      <section id="portfolio" className="section-pad px-4 sm:px-6 max-w-7xl mx-auto">
+      <section id="portfolio" className="section-pad px-4 sm:px-6 max-w-7xl mx-auto content-lazy">
         <div className="mb-8 sm:mb-12 reveal">
           <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Портфолио</span>
           <h2 className="font-heading uppercase tracking-wide mt-2"
@@ -938,7 +941,7 @@ export default function Index() {
 
                     {/* ЛИЦО */}
                     <div className="portfolio-flip-front">
-                      <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
+                      <img src={p.img} alt={p.label} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 flex items-end justify-between gap-3">
                         <div className="min-w-0">
@@ -1033,7 +1036,7 @@ export default function Index() {
             <button key={i} onClick={() => portfolioGoTo(i)}
               className={`rounded-xl overflow-hidden transition-all duration-300 shrink-0 w-[22vw] sm:w-auto ${i === portfolioIdx ? 'ring-2 ring-[#FF6B00] opacity-100' : 'opacity-50 hover:opacity-80'}`}
               style={{ aspectRatio: '4/3' }}>
-              <img src={p.img} alt={p.label} className="w-full h-full object-cover" />
+              <img src={p.img} alt={p.label} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
@@ -1081,7 +1084,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
             <a href="#" className="flex items-center shrink-0">
-              <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" className="h-12 sm:h-14 w-auto" />
+              <img src="https://cdn.poehali.dev/files/e27b0206-9ac5-4550-810a-31cb94bf6f77.png" alt="Стронг-Монтаж" loading="lazy" decoding="async" className="h-12 sm:h-14 w-auto" />
             </a>
             {/* Nav — скрываем на малых экранах, показываем на md+ */}
             <nav className="hidden md:flex gap-6 flex-wrap justify-center">

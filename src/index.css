@@ -254,4 +254,28 @@
       padding-block: 1.75rem;
     }
   }
+
+  /* ── PERFORMANCE ───────────────────────────────────────────────────── */
+
+  /* Defer rendering of off-screen sections */
+  .content-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
+
+  /* GPU-accelerate animated elements */
+  .animate-marquee {
+    will-change: transform;
+  }
+
+  /* Avoid layout thrash on card hovers */
+  .card-hover {
+    will-change: transform;
+    contain: layout style;
+  }
+
+  /* Optimise image rendering */
+  img {
+    image-rendering: auto;
+  }
 }
