@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
+import func2url from '../../backend/func2url.json';
 
 function useReveal() {
   useEffect(() => {
@@ -36,6 +37,107 @@ function StatCard({ value, suffix, label, started }: { value: number; suffix: st
       <div className="font-heading text-3xl sm:text-5xl gradient-text mb-1">{count}{suffix}</div>
       <div className="text-[#999] text-xs sm:text-sm font-body leading-snug">{label}</div>
     </div>
+  );
+}
+
+function ContactForm() {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !phone.trim()) return;
+    setStatus('loading');
+    try {
+      const res = await fetch(func2url['send-email'], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), phone: phone.trim() }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setName('');
+        setPhone('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <section className="section-pad px-4 sm:px-6 border-t border-[#2a2a2a] bg-[#0a0a0a]">
+      <div className="max-w-2xl mx-auto">
+        <div className="reveal mb-8 text-center">
+          <span className="text-[#FF6B00] text-xs font-medium tracking-[0.2em] uppercase">Заявка</span>
+          <h2 className="font-heading uppercase tracking-wide mt-2"
+            style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}>
+            Оставьте заявку
+          </h2>
+          <p className="text-[#777] mt-3 text-sm">Перезвоним в течение 30 минут в рабочее время</p>
+        </div>
+
+        {status === 'success' ? (
+          <div className="reveal flex flex-col items-center gap-4 py-10">
+            <div className="w-16 h-16 rounded-full bg-[#FF6B00]/15 flex items-center justify-center">
+              <Icon name="CheckCircle" size={32} className="text-[#FF6B00]" />
+            </div>
+            <p className="font-heading text-white text-xl uppercase tracking-wide">Заявка отправлена!</p>
+            <p className="text-[#777] text-sm text-center">Мы получили вашу заявку и свяжемся с вами в ближайшее время</p>
+            <button onClick={() => setStatus('idle')}
+              className="mt-2 text-[#FF6B00] text-sm hover:underline">
+              Отправить ещё одну
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="reveal space-y-4">
+            <div>
+              <input
+                type="text"
+                placeholder="Ваше имя"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                required
+                className="w-full bg-[#111111] border border-[#2a2a2a] hover:border-[#444] focus:border-[#FF6B00] rounded-xl px-5 py-4 text-white placeholder-[#555] outline-none transition-colors text-sm"
+              />
+            </div>
+            <div>
+              <input
+                type="tel"
+                placeholder="Номер телефона"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                required
+                className="w-full bg-[#111111] border border-[#2a2a2a] hover:border-[#444] focus:border-[#FF6B00] rounded-xl px-5 py-4 text-white placeholder-[#555] outline-none transition-colors text-sm"
+              />
+            </div>
+            {status === 'error' && (
+              <p className="text-red-400 text-sm flex items-center gap-2">
+                <Icon name="AlertCircle" size={16} />
+                Ошибка отправки. Попробуйте ещё раз или позвоните нам.
+              </p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full gradient-bg text-white font-heading uppercase tracking-wide text-sm py-4 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all min-h-[54px] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              {status === 'loading' ? (
+                <>
+                  <Icon name="Loader" size={18} className="animate-spin" />
+                  Отправка...
+                </>
+              ) : 'Оставить заявку'}
+            </button>
+            <p className="text-[#444] text-xs text-center">
+              Нажимая кнопку, вы соглашаетесь с{' '}
+              <a href="/privacy" className="hover:text-[#FF6B00] transition-colors">политикой конфиденциальности</a>
+            </p>
+          </form>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -936,6 +1038,9 @@ export default function Index() {
           ))}
         </div>
       </section>
+
+      {/* ─── ФОРМА ОБРАТНОЙ СВЯЗИ ──────────────────────────────────────── */}
+      <ContactForm />
 
       {/* ─── КОНТАКТЫ ──────────────────────────────────────────────────── */}
       <section id="contacts" className="section-pad px-4 sm:px-6 bg-[#0d0d0d] border-t border-[#2a2a2a]">
