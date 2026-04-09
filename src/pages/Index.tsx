@@ -802,14 +802,25 @@ export default function Index() {
       </section>
 
       {/* ─── ДИНАМИЧЕСКАЯ ПОДСВЕТКА ─────────────────────────────────────── */}
-      <section className="border-b border-[#2a2a2a] content-lazy">
+      <section className="border-b border-[#2a2a2a] content-lazy relative">
         <img
-          src="https://cdn.poehali.dev/files/31860322-6c88-483c-8ef8-d091fd1cdfda.png"
+          src="https://cdn.poehali.dev/files/c8f20563-f169-40ad-a6ab-3fb0c2bc3444.png"
           alt="Динамическая подсветка — учитываем индивидуальность каждого проекта"
           loading="lazy"
           decoding="async"
           className="w-full block"
         />
+        {/* Подписи поверх чёрного поля в верхней части */}
+        <div className="absolute top-0 left-0 right-0 px-6 sm:px-10 flex flex-col justify-center" style={{ height: '22%' }}>
+          <h2 className="font-heading uppercase tracking-wide text-white leading-tight"
+            style={{ fontSize: 'clamp(1rem, 2.8vw, 2.2rem)' }}>
+            Динамическая подсветка
+          </h2>
+          <p className="text-[#ccc] mt-1"
+            style={{ fontSize: 'clamp(0.7rem, 1.6vw, 1.25rem)' }}>
+            Учитываем индивидуальность каждого проекта
+          </p>
+        </div>
       </section>
 
       {/* ─── НАШ ОПЫТ ──────────────────────────────────────────────────── */}
