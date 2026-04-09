@@ -784,13 +784,13 @@ export default function Index() {
           alt="Архитектурно-художественная подсветка"
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
-        {/* Затемняющий градиент снизу */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
+        {/* Затемняющий градиент сверху — затемняем небо для читаемости текста */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/60" />
 
-        {/* Подпись поверх неба — верхняя часть */}
-        <div className="relative z-10 px-4 sm:px-6 pt-8 sm:pt-12 max-w-7xl mx-auto">
+        {/* Подпись в зоне чистого неба */}
+        <div className="relative z-10 px-4 sm:px-6 pt-4 sm:pt-6 max-w-7xl mx-auto">
           <div className="flex items-center gap-3 sm:gap-5">
             <span className="font-heading text-[#FF6B00] shrink-0 leading-none drop-shadow-lg" style={{ fontSize: 'clamp(2rem,6vw,5rem)', opacity: 0.7 }}>05</span>
             <h2 className="font-heading uppercase tracking-wide text-white drop-shadow-lg"
