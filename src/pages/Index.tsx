@@ -801,6 +801,17 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ─── ДИНАМИЧЕСКАЯ ПОДСВЕТКА ─────────────────────────────────────── */}
+      <section className="border-b border-[#2a2a2a] content-lazy">
+        <img
+          src="https://cdn.poehali.dev/files/31860322-6c88-483c-8ef8-d091fd1cdfda.png"
+          alt="Динамическая подсветка — учитываем индивидуальность каждого проекта"
+          loading="lazy"
+          decoding="async"
+          className="w-full block"
+        />
+      </section>
+
       {/* ─── НАШ ОПЫТ ──────────────────────────────────────────────────── */}
       <section className="section-pad px-4 sm:px-6 max-w-7xl mx-auto" ref={statsRef}>
         <div className="mb-8 sm:mb-12 reveal">
