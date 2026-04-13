@@ -802,16 +802,9 @@ export default function Index() {
       </section>
 
       {/* ─── ДИНАМИЧЕСКАЯ ПОДСВЕТКА ─────────────────────────────────────── */}
-      <section className="border-b border-[#2a2a2a] content-lazy relative">
-        <img
-          src="https://cdn.poehali.dev/files/c8f20563-f169-40ad-a6ab-3fb0c2bc3444.png"
-          alt="Динамическая подсветка — учитываем индивидуальность каждого проекта"
-          loading="lazy"
-          decoding="async"
-          className="w-full block"
-        />
-        {/* Подписи поверх чёрного поля в верхней части */}
-        <div className="absolute top-0 left-0 right-0 px-6 sm:px-10 flex flex-col justify-center" style={{ height: '22%' }}>
+      <section className="border-b border-[#2a2a2a] content-lazy bg-black py-10 px-6 sm:px-12">
+        {/* Заголовок блока */}
+        <div className="mb-8">
           <h2 className="font-heading uppercase tracking-wide text-white leading-tight"
             style={{ fontSize: 'clamp(1rem, 2.8vw, 2.2rem)' }}>
             Динамическая подсветка
@@ -820,6 +813,32 @@ export default function Index() {
             style={{ fontSize: 'clamp(0.7rem, 1.6vw, 1.25rem)' }}>
             Учитываем индивидуальность каждого проекта
           </p>
+        </div>
+        {/* Три фото */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { src: 'https://cdn.poehali.dev/files/2bf2a33f-505d-47d9-8919-e967b4d28f7c.png', label: 'СПОРТ' },
+            { src: 'https://cdn.poehali.dev/files/98845595-1ff6-491e-893e-a826defcf14c.png', label: 'АРХИТЕКТУРА' },
+            { src: 'https://cdn.poehali.dev/files/1c275242-a25c-4e47-b98c-be489ccf26ee.png', label: 'МОСТЫ' },
+          ].map(({ src, label }) => (
+            <div key={label} className="flex flex-col gap-2">
+              <p className="text-white font-heading uppercase tracking-widest text-sm">{label}</p>
+              <div
+                className="rounded-sm overflow-hidden"
+                style={{
+                  boxShadow: '0 0 0 2px #c2610c, 0 0 18px 6px rgba(194,97,12,0.65), 0 0 40px 10px rgba(194,97,12,0.3)',
+                }}
+              >
+                <img
+                  src={src}
+                  alt={label}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full aspect-video object-cover block"
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
