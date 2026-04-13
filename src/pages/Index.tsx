@@ -780,7 +780,7 @@ export default function Index() {
       <section className="border-y border-[#2a2a2a] overflow-hidden content-lazy relative" style={{ minHeight: 'clamp(280px, 50vw, 560px)' }}>
         {/* Фоновое изображение */}
         <img
-          src="https://cdn.poehali.dev/files/77238577-73bb-4a6c-ac4e-5e8d3a1e0d58.png"
+          src="https://cdn.poehali.dev/files/fec6f6f4-1b66-47c6-9e8c-92347f989003.png"
           alt="Архитектурно-художественная подсветка"
           loading="lazy"
           decoding="async"
