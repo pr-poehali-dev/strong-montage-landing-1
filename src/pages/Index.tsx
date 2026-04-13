@@ -622,26 +622,37 @@ export default function Index() {
               Наши услуги
             </h2>
           </div>
-          <div className="flex items-start gap-3 sm:gap-5">
-            <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(2rem,6vw,5rem)', opacity: 0.25 }}>01</span>
-            <h3 className="font-heading uppercase tracking-wide pt-1 sm:pt-2"
-              style={{ fontSize: 'clamp(1.1rem,3vw,2.5rem)' }}>
-              Системы электропитания<br />и освещения
-            </h3>
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Фоновый баннер блока 01 */}
+            <div className="absolute inset-0 z-0">
+              <img src="https://cdn.poehali.dev/files/fbad7209-9e8c-4e6e-b56c-bbdc1d2824f2.png"
+                alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-[#0a0a0a]/70" />
+            </div>
+            {/* Контент поверх */}
+            <div className="relative z-10 p-5 sm:p-8 md:p-12">
+              <div className="flex items-start gap-3 sm:gap-5">
+                <span className="font-heading text-[#FF6B00] shrink-0 leading-none" style={{ fontSize: 'clamp(2rem,6vw,5rem)', opacity: 0.25 }}>01</span>
+                <h3 className="font-heading uppercase tracking-wide pt-1 sm:pt-2"
+                  style={{ fontSize: 'clamp(1.1rem,3vw,2.5rem)' }}>
+                  Системы электропитания<br />и освещения
+                </h3>
+              </div>
+              <ul className="mt-5 sm:mt-8 space-y-3 sm:space-y-4">
+                {[
+                  'Внутреннее электроосвещение.',
+                  'Внутренняя розеточная сеть.',
+                  'Системы бесперебойного питания.',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 sm:gap-4 text-[#999]"
+                    style={{ fontSize: 'clamp(0.9rem,2vw,1.4rem)' }}>
+                    <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <ul className="mt-5 sm:mt-8 space-y-3 sm:space-y-4">
-            {[
-              'Внутреннее электроосвещение.',
-              'Внутренняя розеточная сеть.',
-              'Системы бесперебойного питания.',
-            ].map((item, i) => (
-              <li key={i} className="flex items-center gap-3 sm:gap-4 text-[#999]"
-                style={{ fontSize: 'clamp(0.9rem,2vw,1.4rem)' }}>
-                <span className="w-2 h-2 rounded-full bg-[#FF6B00] shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
 
           <div className="mt-10 sm:mt-16 border-t border-[#2a2a2a] pt-10 sm:pt-16 relative rounded-2xl overflow-hidden">
             {/* Фоновый баннер */}
