@@ -703,6 +703,20 @@ export default function Index() {
                   </li>
                 ))}
               </ul>
+              {/* Мини-галерея примеров */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-6 sm:mt-8">
+                {[
+                  'https://cdn.poehali.dev/files/e6e61d8d-9ff3-40dc-a412-5175bcafdb54.jpg',
+                  'https://cdn.poehali.dev/files/44cd9228-d84e-4065-8c27-36ba9f324fcc.jpg',
+                  'https://cdn.poehali.dev/files/ef285f5b-b894-4a6b-8d2d-4083417b2155.jpg',
+                ].map((src, i) => (
+                  <div key={i} className="rounded-sm overflow-hidden"
+                    style={{ boxShadow: '0 0 0 2px #c2610c, 0 0 14px 4px rgba(194,97,12,0.5)' }}>
+                    <img src={src} alt="" loading="lazy" decoding="async"
+                      className="w-full aspect-video object-cover block" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
