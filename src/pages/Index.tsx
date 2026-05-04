@@ -820,7 +820,7 @@ export default function Index() {
         {/* Фоновое изображение */}
         <img
           src="https://cdn.poehali.dev/files/fec6f6f4-1b66-47c6-9e8c-92347f989003.png"
-          alt="Архитектурно-художественная подсветка"
+          alt="Профессиональные системы освещения"
           loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-top"
@@ -840,7 +840,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ─── ДИНАМИЧЕСКАЯ ПОДСВЕТКА ─────────────────────────────────────── */}
+      {/* ─── ДИНАМИЧЕСКИЕ СИСТЕМЫ ───────────────────────────────────────── */}
       <section className="border-b border-[#2a2a2a] content-lazy bg-black py-10 px-6 sm:px-12">
         {/* Заголовок блока */}
         <div className="mb-8">
