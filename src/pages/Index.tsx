@@ -834,7 +834,7 @@ export default function Index() {
             <span className="font-heading text-[#FF6B00] shrink-0 leading-none drop-shadow-lg" style={{ fontSize: 'clamp(2rem,6vw,5rem)', opacity: 0.7 }}>05</span>
             <h2 className="font-heading uppercase tracking-wide text-white drop-shadow-lg"
               style={{ fontSize: 'clamp(1.3rem,3.5vw,3rem)', textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}>
-              Архитектурно-художественная подсветка
+              Профессиональные системы освещения
             </h2>
           </div>
         </div>
@@ -846,7 +846,7 @@ export default function Index() {
         <div className="mb-8">
           <h2 className="font-heading uppercase tracking-wide text-white leading-tight"
             style={{ fontSize: 'clamp(1rem, 2.8vw, 2.2rem)' }}>
-            Динамическая подсветка
+            Динамические системы
           </h2>
           <p className="text-[#ccc] mt-1"
             style={{ fontSize: 'clamp(0.7rem, 1.6vw, 1.25rem)' }}>
